@@ -10,24 +10,26 @@ namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
     {
         private ObservableCollection<Models.Slownik_Wojewodztw> _dataList = new ObservableCollection<Models.Slownik_Wojewodztw>();
         private Slownik_WojewodztwDataService _dataService = new Slownik_WojewodztwDataService();
+
         private Models.Slownik_Wojewodztw _selected;
+        private ViewModelCommand _addCommand = null;
+        private ViewModelCommand _editCommand = null;
+        private ViewModelCommand _removeCommand = null;
 
         public ObservableCollection<Models.Slownik_Wojewodztw> DataList
         {
             get { return _dataList; }
             set { _dataList = value; NotifyPropertyChanged("DataList"); }
         }
-
         public Slownik_WojewodztwDataService DataService
         {
             get { return _dataService; }
             set { _dataService = value; }
         }
-
         public Models.Slownik_Wojewodztw Selected
         {
             get { return _selected; }
-            set 
+            set
             {
                 _selected = value;
                 NotifyPropertyChanged("Selected");
@@ -53,7 +55,6 @@ namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
                 _dataService.LoadData();
             }
         }
-
         private void ShapeAndLoad(List<Models.Slownik_Wojewodztw> list)
         {
             var shaped = new ObservableCollection<Models.Slownik_Wojewodztw>();
@@ -65,7 +66,6 @@ namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
         }
 
         #region Command
-        private ViewModelCommand _addCommand = null;
         public ViewModelCommand AddCommand
         {
             get
@@ -77,8 +77,6 @@ namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
                 return _addCommand;
             }
         }
-
-        private ViewModelCommand _editCommand = null;
         public ViewModelCommand EditCommand
         {
             get
@@ -90,8 +88,6 @@ namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
                 return _editCommand;
             }
         }
-
-        private ViewModelCommand _removeCommand = null;
         public ViewModelCommand RemoveCommand
         {
             get
@@ -129,7 +125,6 @@ namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void editNew()
         {
             try
@@ -155,7 +150,6 @@ namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void removeNew()
         {
             try

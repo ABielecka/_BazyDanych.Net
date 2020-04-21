@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace DatabaseW.DataViewModel.Osoby
@@ -33,7 +31,6 @@ namespace DatabaseW.DataViewModel.Osoby
                 DataLoaded(null, EventArgs.Empty);
             }
         }
-
         public void LoadData()
         {
             try
@@ -54,7 +51,6 @@ namespace DatabaseW.DataViewModel.Osoby
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         public bool Save(Models.Osoby data)
         {
             try
@@ -71,7 +67,6 @@ namespace DatabaseW.DataViewModel.Osoby
                 return false;
             }
         }
-
         public bool Update(Models.Osoby data)
         {
             try
@@ -87,7 +82,6 @@ namespace DatabaseW.DataViewModel.Osoby
                 return false;
             }
         }
-
         public bool Remove(Models.Osoby data)
         {
             try

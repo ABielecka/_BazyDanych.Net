@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace DatabaseW.DataViewModel.Osoby
@@ -14,12 +11,16 @@ namespace DatabaseW.DataViewModel.Osoby
         private ObservableCollection<Models.Osoby> _dataList = new ObservableCollection<Models.Osoby>();
         private OsobyDataService _dataService = new OsobyDataService();
 
+        private Models.Osoby _selected;
+        private ViewModelCommand _addCommand = null;
+        private ViewModelCommand _editCommand = null;
+        private ViewModelCommand _removeCommand = null;
+
         public ObservableCollection<Models.Osoby> DataList
         {
             get { return _dataList; }
             set { _dataList = value; NotifyPropertyChanged("DataList"); }
         }
-
         public OsobyDataService DataService
         {
             get { return _dataService; }
@@ -43,7 +44,6 @@ namespace DatabaseW.DataViewModel.Osoby
                 _dataService.LoadData();
             }
         }
-
         private void ShapeAndLoad(List<Models.Osoby> list)
         {
             var shaped = new ObservableCollection<Models.Osoby>();
@@ -53,8 +53,6 @@ namespace DatabaseW.DataViewModel.Osoby
             }
             DataList = shaped;
         }
-
-        private Models.Osoby _selected;
 
         public Models.Osoby Selected
         {
@@ -69,7 +67,6 @@ namespace DatabaseW.DataViewModel.Osoby
         }
 
         #region Command
-        private ViewModelCommand _addCommand = null;
         public ViewModelCommand AddCommand
         {
             get
@@ -81,8 +78,6 @@ namespace DatabaseW.DataViewModel.Osoby
                 return _addCommand;
             }
         }
-
-        private ViewModelCommand _editCommand = null;
         public ViewModelCommand EditCommand
         {
             get
@@ -94,8 +89,6 @@ namespace DatabaseW.DataViewModel.Osoby
                 return _editCommand;
             }
         }
-
-        private ViewModelCommand _removeCommand = null;
         public ViewModelCommand RemoveCommand
         {
             get
@@ -133,7 +126,6 @@ namespace DatabaseW.DataViewModel.Osoby
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void editNew()
         {
             try
@@ -159,15 +151,14 @@ namespace DatabaseW.DataViewModel.Osoby
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void removeNew()
         {
             try
             {
-                if(MessageBox.Show("Czy chcesz usunąć?", "Pytanie", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Czy chcesz usunąć?", "Pytanie", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     _dataService.AreDataLoaded = true;
-                    if(_dataService.Remove(_selected))
+                    if (_dataService.Remove(_selected))
                     {
                         Load();
                     }

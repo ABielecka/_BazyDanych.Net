@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DatabaseW.Views.Slownik_wyposazen
 {
@@ -18,6 +7,8 @@ namespace DatabaseW.Views.Slownik_wyposazen
     {
         #region Private Members
         private Models.Slownik_wyposazen _data;
+        private bool _addNew = false;
+        private Models.Slownik_wyposazen _dataOld;
         #endregion Private Members
 
         public Models.Slownik_wyposazen Data
@@ -25,15 +16,11 @@ namespace DatabaseW.Views.Slownik_wyposazen
             get { return _data; }
             set { _data = value; }
         }
-
-        private bool _addNew = false;
         public bool AddNew
         {
             get { return _addNew; }
             set { _addNew = value; }
         }
-
-        private Models.Slownik_wyposazen _dataOld;
 
         #region Constructors
         public Slownik_wyposazenDetail()
@@ -71,7 +58,6 @@ namespace DatabaseW.Views.Slownik_wyposazen
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void btnAnuluj_Click(object sender, RoutedEventArgs e)
         {
             if (!_addNew)

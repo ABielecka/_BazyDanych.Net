@@ -114,6 +114,15 @@
     <Compile Include="Views\Nieruchomosci\NieruchomosciList.xaml.cs">
       <DependentUpon>NieruchomosciList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Nieruchomosci\PokojeDetail.xaml.cs">
+      <DependentUpon>PokojeDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Nieruchomosci\Wyposazenie_nieruchomosciDetail.xaml.cs">
+      <DependentUpon>Wyposazenie_nieruchomosciDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Nieruchomosci\Wyposazenie_pokojuDetail.xaml.cs">
+      <DependentUpon>Wyposazenie_pokojuDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Osoby\OsobyDetail.xaml.cs">
       <DependentUpon>OsobyDetail.xaml</DependentUpon>
     </Compile>
@@ -155,6 +164,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Nieruchomosci\NieruchomosciList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Nieruchomosci\PokojeDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Nieruchomosci\Wyposazenie_nieruchomosciDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Nieruchomosci\Wyposazenie_pokojuDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

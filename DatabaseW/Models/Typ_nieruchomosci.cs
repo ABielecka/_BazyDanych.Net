@@ -35,12 +35,12 @@ namespace DatabaseW.Models
             set { _opis = value; }
         }
         #endregion Public Attributes
+
         #region IDataErrorInfo Members
         public string Error
         {
             get { return this[null]; }
         }
-
         public string this[string propertyName]
         {
             get

@@ -1,6 +1,7 @@
 ﻿using DatabaseW.DataViewModel;
 using System;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DatabaseW.Models
 {
@@ -40,47 +41,45 @@ namespace DatabaseW.Models
             get { return _idOsoby; }
             set { _idOsoby = value; }
         }
-
         public string Nazwisko
         {
             get { return _nazwisko; }
             set { _nazwisko = value; }
         }
-
         public string Imie
         {
             get { return _imie; }
             set { _imie = value; }
         }
-
         public DateTime? DataUrodzenia
         {
             get { return _dataUrodzenia; }
             set { _dataUrodzenia = value; }
         }
-
         public string Telefon
         {
             get { return _telefon; }
             set { _telefon = value; }
         }
-
         public Slownik_Wojewodztw WojewodztwoZamieszkania
         {
             get { return _wojewodztwoZamieszkania; }
             set { _wojewodztwoZamieszkania = value; }
         }
-
         public string MiastoZamieszkania
         {
             get { return _miastoZamieszkania; }
             set { _miastoZamieszkania = value; }
         }
-
         public string UlicaZamieszkania
         {
             get { return _ulicaZamieszkania; }
             set { _ulicaZamieszkania = value; }
+        }
+        [NotMapped]
+        public string NazwiskoImie
+        {
+            get { return _nazwisko + " " + _imie;  }
         }
         #endregion Public Attributes
 
@@ -89,7 +88,6 @@ namespace DatabaseW.Models
         {
             get { return this[null]; }
         }
-
         public string this[string propertyName]
         {
             get

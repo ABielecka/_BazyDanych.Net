@@ -8,6 +8,8 @@ namespace DatabaseW.Views.Osoby
     {
         #region Private Members
         private Models.Osoby _data;
+        private bool _addNew = false;
+        private Models.Osoby _dataOld;
         #endregion Private Members
 
         public Models.Osoby Data
@@ -15,15 +17,12 @@ namespace DatabaseW.Views.Osoby
             get { return _data; }
             set { _data = value; }
         }
-
-        private bool _addNew = false;
         public bool AddNew
         {
             get { return _addNew; }
             set { _addNew = value; }
         }
 
-        private Models.Osoby _dataOld;
 
         #region Constructors
         public OsobyDetail()
@@ -73,7 +72,6 @@ namespace DatabaseW.Views.Osoby
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void btnAnuluj_Click(object sender, RoutedEventArgs e)
         {
             if (!_addNew)

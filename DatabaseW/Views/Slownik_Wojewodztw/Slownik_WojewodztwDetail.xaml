@@ -14,7 +14,7 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <Label Content="Wojewodztwo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Województwo" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
 
         <Button x:Name="btnZapisz"  Content="Zapisz" HorizontalAlignment="Left" Margin="177,49,0,0" VerticalAlignment="Top" Width="75" Click="btnZapisz_Click" RenderTransformOrigin="1.099,1.207"/>
         <Button x:Name="btnAnuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="279,49,0,0" VerticalAlignment="Top" Width="75" Click="btnAnuluj_Click"/>

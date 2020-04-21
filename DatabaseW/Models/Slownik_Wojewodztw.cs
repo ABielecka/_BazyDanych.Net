@@ -12,11 +12,9 @@ namespace DatabaseW.Models
         #endregion Private Members
 
         #region Constructors
-
         public Slownik_Wojewodztw()
         {
         }
-
         public Slownik_Wojewodztw(long idWojewodztwa, string nazwaWojewodztwa)
         {
             _idWojewodztwa = idWojewodztwa;
@@ -25,13 +23,11 @@ namespace DatabaseW.Models
         #endregion Constructors
 
         #region Public Attributes
-
         public long IdWojewodztwa
         {
             get { return _idWojewodztwa; }
             set { _idWojewodztwa = value; }
         }
-
         public string NazwaWojewodztwa
         {
             get { return _nazwaWojewodztwa; }
@@ -44,7 +40,6 @@ namespace DatabaseW.Models
         {
             get { return this[null]; }
         }
-
         public string this[string propertyName]
         {
             get

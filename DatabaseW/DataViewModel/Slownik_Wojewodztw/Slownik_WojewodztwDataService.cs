@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
@@ -19,7 +17,6 @@ namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
             get { return _dataList; }
             set { _dataList = value; }
         }
-
         public bool AreDataLoaded
         {
             get { return _areDataLoaded; }
@@ -33,7 +30,6 @@ namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
                 DataLoaded(null, EventArgs.Empty);
             }
         }
-
         public void LoadData()
         {
             try
@@ -51,7 +47,6 @@ namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         public bool Save(Models.Slownik_Wojewodztw data)
         {
             try
@@ -68,7 +63,6 @@ namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
                 return false;
             }
         }
-
         public bool Update(Models.Slownik_Wojewodztw data)
         {
             try
@@ -84,7 +78,6 @@ namespace DatabaseW.DataViewModel.Slownik_Wojewodztw
                 return false;
             }
         }
-
         public bool Remove(Models.Slownik_Wojewodztw data)
         {
             try

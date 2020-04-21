@@ -15,7 +15,6 @@ namespace DatabaseW.Models
         public Slownik_wyposazen()
         {
         }
-
         public Slownik_wyposazen(long idWyposazenia, string opis)
         {
             _idWyposazenia = idWyposazenia;
@@ -29,7 +28,6 @@ namespace DatabaseW.Models
             get { return _idWyposazenia; }
             set { _idWyposazenia = value; }
         }
-
         public string Opis
         {
             get { return _opis; }
@@ -42,7 +40,6 @@ namespace DatabaseW.Models
         {
             get { return this[null]; }
         }
-
         public string this[string propertyName]
         {
             get

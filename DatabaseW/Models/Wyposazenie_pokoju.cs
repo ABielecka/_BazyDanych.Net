@@ -15,7 +15,6 @@ namespace DatabaseW.Models
         public Wyposazenie_pokoju()
         {
         }
-
         public Wyposazenie_pokoju(long idWyposazeniaPokoju, Slownik_wyposazen wyposazenie)
         {
             _idWyposazeniaPokoju = idWyposazeniaPokoju;
@@ -29,7 +28,6 @@ namespace DatabaseW.Models
             get { return _idWyposazeniaPokoju; }
             set { _idWyposazeniaPokoju = value; }
         }
-
         public Slownik_wyposazen Wyposazenie
         {
             get { return _wyposazenie; }
@@ -42,7 +40,6 @@ namespace DatabaseW.Models
         {
             get { return this[null]; }
         }
-
         public string this[string propertyName]
         {
             get

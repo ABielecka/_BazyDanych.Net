@@ -1,16 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DatabaseW.Views.Typ_nieruchomosci
 {
@@ -18,6 +7,8 @@ namespace DatabaseW.Views.Typ_nieruchomosci
     {
         #region Private Members
         private Models.Typ_nieruchomosci _data;
+        private bool _addNew = false;
+        private Models.Typ_nieruchomosci _dataOld;
         #endregion Private Members
 
         public Models.Typ_nieruchomosci Data
@@ -25,15 +16,11 @@ namespace DatabaseW.Views.Typ_nieruchomosci
             get { return _data; }
             set { _data = value; }
         }
-
-        private bool _addNew = false;
         public bool AddNew
         {
             get { return _addNew; }
             set { _addNew = value; }
         }
-
-        private Models.Typ_nieruchomosci _dataOld;
 
         #region Constructors
         public Typ_nieruchomosciDetail()
@@ -71,7 +58,6 @@ namespace DatabaseW.Views.Typ_nieruchomosci
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void btnAnuluj_Click(object sender, RoutedEventArgs e)
         {
             if (!_addNew)

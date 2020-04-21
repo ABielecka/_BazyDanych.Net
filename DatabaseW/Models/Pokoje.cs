@@ -43,31 +43,26 @@ namespace DatabaseW.Models
             get { return _idPokoju; }
             set { _idPokoju = value; }
         }
-
         public decimal MetrazPokoju
         {
             get { return _metrazPokoju; }
             set { _metrazPokoju = value; }
         }
-
         public int IloscOsobwPokoju
         {
             get { return _iloscOsobwPokoju; }
             set { _iloscOsobwPokoju = value; }
         }
-
         public string Opis
         {
             get { return _opis; }
             set { _opis = value; }
         }
-
         public double CenaWynajmuPokoju
         {
             get { return _cenaWynajmuPokoju; }
             set { _cenaWynajmuPokoju = value; }
         }
-
         public DateTime OkresWynajmuOd
         {
             get { return _okresWynajmuOd; }
@@ -78,7 +73,6 @@ namespace DatabaseW.Models
             get { return _okresWynajmuDo; }
             set { _okresWynajmuDo = value; }
         }
-
         public IList<Wyposazenie_pokoju> Wyposazenie
         {
             get { return _wyposazenie; }
@@ -96,7 +90,6 @@ namespace DatabaseW.Models
         {
             get { return this[null]; }
         }
-
         public string this[string propertyName]
         {
             get
@@ -147,7 +140,7 @@ namespace DatabaseW.Models
                 }
                 if (propertyName == string.Empty || propertyName == "Status")
                 {
-                    if (this.Status == null)
+                    if (this.Status != false && this.Status != true)
                     {
                         result += "Pole jest obowiązkowe." + Environment.NewLine;
                     }

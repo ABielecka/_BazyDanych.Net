@@ -10,6 +10,11 @@ namespace DatabaseW.DataViewModel.Najem
         private ObservableCollection<Models.Najem> _dataList = new ObservableCollection<Models.Najem>();
         private NajemDataService _dataService = new NajemDataService();
 
+        private Models.Najem _selected;
+        private ViewModelCommand _addCommand = null;
+        private ViewModelCommand _editCommand = null;
+        private ViewModelCommand _removeCommand = null;
+
         public ObservableCollection<Models.Najem> DataList
         {
             get { return _dataList; }
@@ -39,7 +44,6 @@ namespace DatabaseW.DataViewModel.Najem
                 _dataService.LoadData();
             }
         }
-
         private void ShapeAndLoad(List<Models.Najem> list)
         {
             var shaped = new ObservableCollection<Models.Najem>();
@@ -49,8 +53,6 @@ namespace DatabaseW.DataViewModel.Najem
             }
             DataList = shaped;
         }
-
-        private Models.Najem _selected;
 
         public Models.Najem Selected
         {
@@ -65,7 +67,6 @@ namespace DatabaseW.DataViewModel.Najem
         }
 
         #region Command
-        private ViewModelCommand _addCommand = null;
         public ViewModelCommand AddCommand
         {
             get
@@ -77,8 +78,6 @@ namespace DatabaseW.DataViewModel.Najem
                 return _addCommand;
             }
         }
-
-        private ViewModelCommand _editCommand = null;
         public ViewModelCommand EditCommand
         {
             get
@@ -90,8 +89,6 @@ namespace DatabaseW.DataViewModel.Najem
                 return _editCommand;
             }
         }
-
-        private ViewModelCommand _removeCommand = null;
         public ViewModelCommand RemoveCommand
         {
             get
@@ -115,7 +112,6 @@ namespace DatabaseW.DataViewModel.Najem
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void editNew()
         {
             try
@@ -127,7 +123,6 @@ namespace DatabaseW.DataViewModel.Najem
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void removeNew()
         {
             try

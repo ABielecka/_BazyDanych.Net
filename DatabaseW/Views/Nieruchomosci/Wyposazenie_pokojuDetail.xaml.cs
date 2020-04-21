@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Windows;
 
-namespace DatabaseW.Views.Slownik_Wojewodztw
+namespace DatabaseW.Views.Nieruchomosci
 {
-    public partial class Slownik_WojewodztwDetail : Window
+    public partial class Wyposazenie_pokojuDetail : Window
     {
         #region Private Members
-        private Models.Slownik_Wojewodztw _data;
+        private Models.Wyposazenie_pokoju _data;
         private bool _addNew = false;
-        private Models.Slownik_Wojewodztw _dataOld;
+        private Models.Wyposazenie_pokoju _dataOld;
         #endregion Private Members
 
-        public Models.Slownik_Wojewodztw Data
+        public Models.Wyposazenie_pokoju Data
         {
             get { return _data; }
             set { _data = value; }
         }
-
         public bool AddNew
         {
             get { return _addNew; }
@@ -24,7 +23,7 @@ namespace DatabaseW.Views.Slownik_Wojewodztw
         }
 
         #region Constructors
-        public Slownik_WojewodztwDetail()
+        public Wyposazenie_pokojuDetail()
         {
             InitializeComponent();
         }
@@ -34,10 +33,10 @@ namespace DatabaseW.Views.Slownik_Wojewodztw
         {
             if (!_addNew)
             {
-                _dataOld = new Models.Slownik_Wojewodztw()
+                _dataOld = new Models.Wyposazenie_pokoju()
                 {
-                    IdWojewodztwa = _data.IdWojewodztwa,
-                    NazwaWojewodztwa = _data.NazwaWojewodztwa
+                    IdWyposazeniaPokoju = _data.IdWyposazeniaPokoju,
+                    Wyposazenie = _data.Wyposazenie
                 };
             }
             this.DataContext = _data;
@@ -47,7 +46,7 @@ namespace DatabaseW.Views.Slownik_Wojewodztw
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(_data.NazwaWojewodztwa))
+                if (_data.Wyposazenie == null)
                 {
                     MessageBox.Show("Proszę podać wszystkie wymagane dane.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
@@ -63,8 +62,8 @@ namespace DatabaseW.Views.Slownik_Wojewodztw
         {
             if (!_addNew)
             {
-                _data.IdWojewodztwa = _dataOld.IdWojewodztwa;
-                _data.NazwaWojewodztwa = _dataOld.NazwaWojewodztwa;
+                _data.IdWyposazeniaPokoju = _dataOld.IdWyposazeniaPokoju;
+                _data.Wyposazenie = _dataOld.Wyposazenie;
             }
             this.DialogResult = false;
         }

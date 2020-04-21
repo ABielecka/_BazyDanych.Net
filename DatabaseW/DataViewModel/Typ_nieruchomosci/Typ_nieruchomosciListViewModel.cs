@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace DatabaseW.DataViewModel.Typ_nieruchomosci
@@ -14,12 +11,16 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
         private ObservableCollection<Models.Typ_nieruchomosci> _dataList = new ObservableCollection<Models.Typ_nieruchomosci>();
         private Typ_nieruchomosciDataService _dataService = new Typ_nieruchomosciDataService();
 
+        private Models.Typ_nieruchomosci _selected;
+        private ViewModelCommand _addCommand = null;
+        private ViewModelCommand _editCommand = null;
+        private ViewModelCommand _removeCommand = null;
+
         public ObservableCollection<Models.Typ_nieruchomosci> DataList
         {
             get { return _dataList; }
             set { _dataList = value; NotifyPropertyChanged("DataList"); }
         }
-
         public Typ_nieruchomosciDataService DataService
         {
             get { return _dataService; }
@@ -43,7 +44,6 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
                 _dataService.LoadData();
             }
         }
-
         private void ShapeAndLoad(List<Models.Typ_nieruchomosci> list)
         {
             var shaped = new ObservableCollection<Models.Typ_nieruchomosci>();
@@ -53,8 +53,6 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
             }
             DataList = shaped;
         }
-
-        private Models.Typ_nieruchomosci _selected;
 
         public Models.Typ_nieruchomosci Selected
         {
@@ -69,7 +67,6 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
         }
 
         #region Command
-        private ViewModelCommand _addCommand = null;
         public ViewModelCommand AddCommand
         {
             get
@@ -81,8 +78,6 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
                 return _addCommand;
             }
         }
-
-        private ViewModelCommand _editCommand = null;
         public ViewModelCommand EditCommand
         {
             get
@@ -94,8 +89,6 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
                 return _editCommand;
             }
         }
-
-        private ViewModelCommand _removeCommand = null;
         public ViewModelCommand RemoveCommand
         {
             get
@@ -133,7 +126,6 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void editNew()
         {
             try
@@ -159,7 +151,6 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void removeNew()
         {
             try

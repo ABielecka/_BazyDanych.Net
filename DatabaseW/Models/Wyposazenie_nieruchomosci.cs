@@ -3,7 +3,7 @@ using DatabaseW.Models;
 using System;
 using System.ComponentModel;
 
-namespace Property_rental.Models
+namespace DatabaseW.Models
 {
     public class Wyposazenie_nieruchomosci : ViewModel, IDataErrorInfo
     {
@@ -16,7 +16,6 @@ namespace Property_rental.Models
         public Wyposazenie_nieruchomosci()
         {
         }
-
         public Wyposazenie_nieruchomosci(long idWyposazeniaNieruchomosci, Slownik_wyposazen wyposazenie)
         {
             _idWyposazeniaNieruchomosci = idWyposazeniaNieruchomosci;
@@ -42,7 +41,6 @@ namespace Property_rental.Models
         {
             get { return this[null]; }
         }
-
         public string this[string propertyName]
         {
             get

@@ -20,7 +20,6 @@ namespace DatabaseW.Models
         public Najem()
         {
         }
-
         public Najem(long idWynajmu, Osoby osobaWynajmujaca, Nieruchomosci nieruchomosc, Pokoje pokoj, DateTime wynajemOd, DateTime wynajemDo, double ustalonaCenaNajmu)
         {
             _idWynajmu = idWynajmu;
@@ -38,37 +37,31 @@ namespace DatabaseW.Models
             get { return _idWynajmu; }
             set { _idWynajmu = value; }
         }
-
         public Osoby OsobaNajmująca
         {
             get { return _osobaNajmująca; }
             set { _osobaNajmująca = value; }
         }
-
         public Nieruchomosci Nieruchomosc
         {
             get { return _nieruchomosc; }
             set { _nieruchomosc = value; }
         }
-
         public Pokoje Pokoj
         {
             get { return _pokoj; }
             set { _pokoj = value; }
         }
-
         public DateTime WynajemOd
         {
             get { return _wynajemOd; }
             set { _wynajemOd = value; }
         }
-
         public DateTime WynajemDo
         {
             get { return _wynajemDo; }
             set { _wynajemDo = value; }
         }
-
         public double UstalonaCenaNajmu
         {
             get { return _ustalonaCenaNajmu; }
@@ -81,7 +74,6 @@ namespace DatabaseW.Models
         {
             get { return this[null]; }
         }
-
         public string this[string propertyName]
         {
             get

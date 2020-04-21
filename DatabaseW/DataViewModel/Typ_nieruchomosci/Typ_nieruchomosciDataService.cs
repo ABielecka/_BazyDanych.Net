@@ -17,7 +17,6 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
             get { return _dataList; }
             set { _dataList = value; }
         }
-
         public bool AreDataLoaded
         {
             get { return _areDataLoaded; }
@@ -31,7 +30,6 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
                 DataLoaded(null, EventArgs.Empty);
             }
         }
-
         public void LoadData()
         {
             try
@@ -49,7 +47,6 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         public bool Save(Models.Typ_nieruchomosci data)
         {
             try
@@ -66,7 +63,6 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
                 return false;
             }
         }
-
         public bool Update(Models.Typ_nieruchomosci data)
         {
             try
@@ -82,7 +78,6 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
                 return false;
             }
         }
-
         public bool Remove(Models.Typ_nieruchomosci data)
         {
             try

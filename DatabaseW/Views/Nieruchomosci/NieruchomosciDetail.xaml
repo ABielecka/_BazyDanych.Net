@@ -15,42 +15,63 @@
     </Window.Resources>
     <Grid>
         <Label x:Name="lblWlasc" Content="Właściciel" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTypN" Content="Typ budynku" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.026,0.167"/>
-        <Label x:Name="lblTypW" Content="Typ wynajmu" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.169,0.552"/>
-        <Label x:Name="lblOpis" Content="Opis" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.502,1.5"/>
-        <Label x:Name="lblMetraz" Content="Metraż" HorizontalAlignment="Left" Margin="10,373,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.169,0.552"/>
-        <Label x:Name="lblCena" Content="Cena" HorizontalAlignment="Left" Margin="10,404,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.169,0.552"/>
-        <Label x:Name="lblOd" Content="Wynajem od" HorizontalAlignment="Left" Margin="10,430,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.169,0.552"/>
-        <Label x:Name="lblDo" Content="Wynajem do" HorizontalAlignment="Left" Margin="10,461,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.169,0.552"/>
-        <Label x:Name="lblStat" Content="Status" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.169,0.552"/>
-        <Label x:Name="lblWoj" Content="Wojewodztwo" HorizontalAlignment="Left" Margin="10,492,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.169,0.552"/>
+        <Label x:Name="lblTypN" Content="Typ budynku" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="0.026,0.167"/>
+        <Label x:Name="lblTypW" Content="Typ wynajmu" HorizontalAlignment="Left" Margin="10,107,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="0.169,0.552"/>
+        <Label x:Name="lblOpis" Content="Opis" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="0.502,1.5"/>
+        <Label x:Name="lblMetraz" Content="Metraż" HorizontalAlignment="Left" Margin="10,373,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="0.169,0.552"/>
+        <Label x:Name="lblCena" Content="Cena" HorizontalAlignment="Left" Margin="10,404,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="0.169,0.552"/>
+        <Label x:Name="lblOd" Content="Wynajem od" HorizontalAlignment="Left" Margin="10,430,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="0.169,0.552"/>
+        <Label x:Name="lblDo" Content="Wynajem do" HorizontalAlignment="Left" Margin="10,461,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="0.169,0.552"/>
+        <Label x:Name="lblStat" Content="Wynajęte" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="0.169,0.552"/>
+        <Label x:Name="lblWoj" Content="Wojewodztwo" HorizontalAlignment="Left" Margin="10,492,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="0.169,0.552"/>
         <Label x:Name="lblMiasto" Content="Miasto" HorizontalAlignment="Left" Margin="10,523,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblUlica" Content="Adres" HorizontalAlignment="Left" Margin="10,554,0,0" VerticalAlignment="Top"/>
 
-        <CheckBox x:Name="ckbStat" Content="Zajęte" HorizontalAlignment="Left" Margin="124,20,0,0" VerticalAlignment="Top"
-                  IsChecked="{Binding Status, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="50"
-                 Text="{Binding OsobaWynajmujaca, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <CheckBox x:Name="ckbStat" HorizontalAlignment="Left" Margin="124,20,0,0" VerticalAlignment="Top"
+                  IsChecked="{Binding Status, Mode=TwoWay, NotifyOnValidationError=True, 
+                  UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <ComboBox x:Name="cmbWlas" HorizontalAlignment="Left" Margin="124,49,0,0" VerticalAlignment="Top" Width="152"
+                  DisplayMemberPath="NazwiskoImie" SelectedItem="{Binding OsobaWynajmujaca, Mode=TwoWay, 
+                  NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
         <ComboBox x:Name="cmbTypN" HorizontalAlignment="Left" Margin="124,80,0,0" VerticalAlignment="Top" Width="152"
-                  DisplayMemberPath="TypNieruchomosci" SelectedItem="{Binding WojewodztwoZamieszkania, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                  DisplayMemberPath="Opis" SelectedItem="{Binding TypNieruchomosci, Mode=TwoWay, 
+                  NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
         <ComboBox x:Name="cmbTypW" HorizontalAlignment="Left" Margin="124,111,0,0" VerticalAlignment="Top" Width="152"
-                  DisplayMemberPath="TypWynajmu" SelectedItem="{Binding WojewodztwoZamieszkania, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                  SelectedItem="{Binding TypWynajmu, Mode=TwoWay, 
+                  NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
         <TextBox HorizontalAlignment="Left" Height="228" Margin="124,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="50"
-                 Text="{Binding OpisNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                 Text="{Binding OpisNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                 ValidatesOnDataErrors=True}"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="124,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="100"
-                 Text="{Binding MetrazNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                 Text="{Binding MetrazNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                 ValidatesOnDataErrors=True}"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="124,401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="100"
-                 Text="{Binding CenaWynajmuNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                 Text="{Binding CenaWynajmuNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                 ValidatesOnDataErrors=True}"/>
         <DatePicker HorizontalAlignment="Left" Margin="124,429,0,0" VerticalAlignment="Top" Width="152"
-                    SelectedDate="{Binding OkresWynajmuOd, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    SelectedDate="{Binding OkresWynajmuOd, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged,
+                    ValidatesOnDataErrors=True}"/>
         <DatePicker HorizontalAlignment="Left" Margin="124,462,0,0" VerticalAlignment="Top" Width="152"
-                    SelectedDate="{Binding OkresWynajmuDo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    SelectedDate="{Binding OkresWynajmuDo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                    ValidatesOnDataErrors=True}"/>
         <ComboBox x:Name="cmbWoj" HorizontalAlignment="Left" Margin="124,496,0,0" VerticalAlignment="Top" Width="152"
-                  DisplayMemberPath="NazwaWojewodztwa" SelectedItem="{Binding WojewodztwoNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                  DisplayMemberPath="NazwaWojewodztwa" SelectedItem="{Binding WojewodztwoNieruchomosci, Mode=TwoWay, 
+                  NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="124,523,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="50"
-                 Text="{Binding MiastoNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                 Text="{Binding MiastoNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                 ValidatesOnDataErrors=True}"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="124,554,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="50"
-                 Text="{Binding UlicaNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                 Text="{Binding UlicaNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                 ValidatesOnDataErrors=True}"/>
         <Button x:Name="btnZapisz"  Content="Zapisz" HorizontalAlignment="Left" Margin="185,597,0,0" VerticalAlignment="Top" Width="75" Click="btnZapisz_Click"/>
         <Button x:Name="btnAnuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="279,597,0,0" VerticalAlignment="Top" Width="75" Click="btnAnuluj_Click"/>
     </Grid>

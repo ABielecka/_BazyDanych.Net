@@ -39,7 +39,7 @@
                 <DataGridTextColumn Header="Wojewodztwo" Binding="{Binding WojewodztwoZamieszkania}"/>
                 <DataGridTextColumn Header="Miasto" Binding="{Binding MiastoZamieszkania}"/>
                 <DataGridTextColumn Header="Adres" Binding="{Binding UlicaZamieszkania}"/>
-                <DataGridTextColumn Header="Telefon" Binding="{Binding Teleon}"/>
+                <DataGridTextColumn Header="Telefon" Binding="{Binding Telefon}"/>
             </DataGrid.Columns>
         </DataGrid>
 

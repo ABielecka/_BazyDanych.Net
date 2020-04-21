@@ -17,7 +17,6 @@ namespace DatabaseW.DataViewModel.Najem
             get { return _dataList; }
             set { _dataList = value; }
         }
-
         public bool AreDataLoaded
         {
             get { return _areDataLoaded; }
@@ -31,7 +30,6 @@ namespace DatabaseW.DataViewModel.Najem
                 DataLoaded(null, EventArgs.Empty);
             }
         }
-
         public void LoadData()
         {
             try
@@ -50,7 +48,6 @@ namespace DatabaseW.DataViewModel.Najem
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         public bool Save(Models.Najem data)
         {
             try
@@ -67,7 +64,6 @@ namespace DatabaseW.DataViewModel.Najem
                 return false;
             }
         }
-
         public bool Update(Models.Najem data)
         {
             try
@@ -83,7 +79,6 @@ namespace DatabaseW.DataViewModel.Najem
                 return false;
             }
         }
-
         public bool Remove(Models.Najem data)
         {
             try

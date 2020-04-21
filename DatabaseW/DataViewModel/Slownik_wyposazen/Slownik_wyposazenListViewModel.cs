@@ -11,12 +11,16 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
         private ObservableCollection<Models.Slownik_wyposazen> _dataList = new ObservableCollection<Models.Slownik_wyposazen>();
         private Slownik_wyposazenDataService _dataService = new Slownik_wyposazenDataService();
 
+        private Models.Slownik_wyposazen _selected;
+        private ViewModelCommand _addCommand = null;
+        private ViewModelCommand _editCommand = null;
+        private ViewModelCommand _removeCommand = null;
+
         public ObservableCollection<Models.Slownik_wyposazen> DataList
         {
             get { return _dataList; }
             set { _dataList = value; NotifyPropertyChanged("DataList"); }
         }
-
         public Slownik_wyposazenDataService DataService
         {
             get { return _dataService; }
@@ -40,7 +44,6 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
                 _dataService.LoadData();
             }
         }
-
         private void ShapeAndLoad(List<Models.Slownik_wyposazen> list)
         {
             var shaped = new ObservableCollection<Models.Slownik_wyposazen>();
@@ -50,8 +53,6 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
             }
             DataList = shaped;
         }
-
-        private Models.Slownik_wyposazen _selected;
 
         public Models.Slownik_wyposazen Selected
         {
@@ -66,7 +67,6 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
         }
 
         #region Command
-        private ViewModelCommand _addCommand = null;
         public ViewModelCommand AddCommand
         {
             get
@@ -78,8 +78,6 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
                 return _addCommand;
             }
         }
-
-        private ViewModelCommand _editCommand = null;
         public ViewModelCommand EditCommand
         {
             get
@@ -91,8 +89,6 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
                 return _editCommand;
             }
         }
-
-        private ViewModelCommand _removeCommand = null;
         public ViewModelCommand RemoveCommand
         {
             get
@@ -130,7 +126,6 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void editNew()
         {
             try
@@ -156,7 +151,6 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void removeNew()
         {
             try

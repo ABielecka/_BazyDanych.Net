@@ -8,6 +8,8 @@ namespace DatabaseW.Views.Nieruchomosci
     {
         #region Private Members
         private Models.Nieruchomosci _data;
+        private bool _addNew = false;
+        private Models.Nieruchomosci _dataOld;
         #endregion Private Members
 
         public Models.Nieruchomosci Data
@@ -15,15 +17,11 @@ namespace DatabaseW.Views.Nieruchomosci
             get { return _data; }
             set { _data = value; }
         }
-
-        private bool _addNew = false;
         public bool AddNew
         {
             get { return _addNew; }
             set { _addNew = value; }
         }
-
-        private Models.Nieruchomosci _dataOld;
 
         #region Constructors
         public NieruchomosciDetail()
@@ -35,7 +33,10 @@ namespace DatabaseW.Views.Nieruchomosci
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             cmbWoj.ItemsSource = App._oSlownik_Wojewodztw.DataList.OrderBy(p => p.NazwaWojewodztwa);
+            cmbWlas.ItemsSource = App._oOsoba.DataList.OrderBy(p => p.Nazwisko);
             cmbTypN.ItemsSource = App._oTyp.DataList.OrderBy(p => p.Opis);
+            cmbTypW.Items.Add("pełny metraż");
+            cmbTypW.Items.Add("pokoje");
             if (!_addNew)
             {
                 _dataOld = new Models.Nieruchomosci()
@@ -62,13 +63,12 @@ namespace DatabaseW.Views.Nieruchomosci
         {
             try
             {
-                if ((_data.Status = (!false || !true)) ||
-                    (_data.OsobaWynajmujaca == null) ||
+                if ((_data.OsobaWynajmujaca == null) ||
                    (_data.TypNieruchomosci == null) ||
                    (_data.TypWynajmu == null) ||
                    string.IsNullOrWhiteSpace(_data.OpisNieruchomosci) ||
-                   (_data.MetrazNieruchomosci == null) ||
-                   (_data.CenaWynajmuNieruchomosci == null) ||
+                   (_data.MetrazNieruchomosci == 0) ||
+                   (_data.CenaWynajmuNieruchomosci == 0) ||
                    (_data.OkresWynajmuOd == null) ||
                    (_data.WojewodztwoNieruchomosci == null) ||
                    string.IsNullOrWhiteSpace(_data.MiastoNieruchomosci) ||
@@ -84,7 +84,6 @@ namespace DatabaseW.Views.Nieruchomosci
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         private void btnAnuluj_Click(object sender, RoutedEventArgs e)
         {
             if (!_addNew)

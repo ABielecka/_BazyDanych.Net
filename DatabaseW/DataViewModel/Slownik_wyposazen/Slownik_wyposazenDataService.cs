@@ -17,7 +17,6 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
             get { return _dataList; }
             set { _dataList = value; }
         }
-
         public bool AreDataLoaded
         {
             get { return _areDataLoaded; }
@@ -31,7 +30,6 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
                 DataLoaded(null, EventArgs.Empty);
             }
         }
-
         public void LoadData()
         {
             try
@@ -49,7 +47,6 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
         public bool Save(Models.Slownik_wyposazen data)
         {
             try
@@ -66,7 +63,6 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
                 return false;
             }
         }
-
         public bool Update(Models.Slownik_wyposazen data)
         {
             try
@@ -82,7 +78,6 @@ namespace DatabaseW.DataViewModel.Slownik_wyposazen
                 return false;
             }
         }
-
         public bool Remove(Models.Slownik_wyposazen data)
         {
             try
