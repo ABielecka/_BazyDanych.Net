@@ -18,7 +18,7 @@ namespace DatabaseW
             {
                 var ctx = App.Ctx.Osobies.ToList<Models.Osoby>();
             }
-            catch (Exception exx)
+            catch (Exception ex)
             {
 
             }

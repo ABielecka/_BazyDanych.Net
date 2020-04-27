@@ -39,16 +39,32 @@
                   IsReadOnly="True"
                   SelectionMode="Single">
                 <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Mapa" ToolTip="Pokaż nieruchomość na mapie" 
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl},Mode=FindAncestor},Path=DataContext.ShowMapCommand}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                     </DataGridTemplateColumn>
+                      <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                <Button Content="POI" ToolTip="Pokaż POI w okolicy" 
+                                        Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl},Mode=FindAncestor},Path=DataContext.ShowSearchCommand}"/>
+                            </DataTemplate>
+                       </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
-                    <DataGridTextColumn Header="Właściciel" Binding="{Binding OsobaWynajmujaca}"/>
-                    <DataGridTextColumn Header="Typ budynku" Binding="{Binding TypNieruchomosci}"/>
+                    <DataGridTextColumn Header="Właściciel" Binding="{Binding OsobaWynajmujaca.NazwiskoImie}"/>
+                    <DataGridTextColumn Header="Typ budynku" Binding="{Binding TypNieruchomosci.Opis}"/>
                     <DataGridTextColumn Header="Typ wynajmu" Binding="{Binding TypWynajmu}"/>
                     <DataGridTextColumn Header="Opis" Binding="{Binding OpisNieruchomosci}"/>
                     <DataGridTextColumn Header="Cena" Binding="{Binding CenaWynajmuNieruchomosci}"/>
                     <DataGridTextColumn Header="Metraz" Binding="{Binding MetrazNieruchomosci}"/>
-                    <DataGridTextColumn Header="Wynajem od" Binding="{Binding OkresWynajmuOd}"/>
-                    <DataGridTextColumn Header="Wynajem do" Binding="{Binding OkresWynajmuDo}"/>
-                    <DataGridTextColumn Header="Wojewodztwo" Binding="{Binding WojewodztwoNieruchomosci}"/>
+                    <DataGridTextColumn Header="Wynajem od" Binding="{Binding OkresWynajmuOd, StringFormat=dd/MM/yyyy}"/>
+                    <DataGridTextColumn Header="Wynajem do" Binding="{Binding OkresWynajmuDo, StringFormat=dd/MM/yyyy}"/>
+                    <DataGridTextColumn Header="Wojewodztwo" Binding="{Binding WojewodztwoNieruchomosci.NazwaWojewodztwa}"/>
                     <DataGridTextColumn Header="Miasto" Binding="{Binding MiastoNieruchomosci}"/>
                     <DataGridTextColumn Header="Adres" Binding="{Binding UlicaNieruchomosci}"/>
                 </DataGrid.Columns>
@@ -71,53 +87,81 @@
                             </Button>
                         </ToolBar>
                         <DataGrid x:Name="dataGridW" Margin="0,30,0,0"
-                                    ItemsSource="{Binding DataListWyp}"
+                                    ItemsSource="{Binding DataListW}"
                                     SelectedItem="{Binding SelectedW}"
                                     AutoGenerateColumns="False"
                                     SelectionUnit="FullRow"
                                     IsReadOnly="True"
                                     SelectionMode="Single">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Opis" Binding="{Binding Opis}"/>
+                                <DataGridTextColumn Header="Opis" Binding="{Binding Wyposazenie.Opis}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Pokoje">
                     <Grid>
-
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="53*"/>
-                            <ColumnDefinition Width="741*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="1*"/>
                         </Grid.ColumnDefinitions>
-                        <ToolBar Height="30" VerticalAlignment="Top" Grid.ColumnSpan="2">
-                            <Button x:Name="btnAddP" ToolTip="Dodawanie" Height="28" Width="28" Margin="0,-2,0,-1" Command="{Binding AddCommandPok}" VerticalAlignment="Bottom">
-                                <Image Source="/DatabaseW;component/Image/add.png" Style="{StaticResource ImageEnabled}"/>
-                            </Button>
-                            <Button x:Name="btnEditP" ToolTip="Edycja" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding EditCommandPok}">
-                                <Image Source="/DatabaseW;component/Image/edit.png" Style="{StaticResource ImageEnabled}"/>
-                            </Button>
-                            <Button x:Name="btnRemoveP" ToolTip="Usuwanie" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding RemoveCommandPok}">
-                                <Image Source="/DatabaseW;component/Image/remove.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
-                            </Button>
-                        </ToolBar>
-                        <DataGrid x:Name="dataGridP" Margin="0,30,0,0"
+                        <Grid Grid.Column="0">
+                            <ToolBar Height="30" VerticalAlignment="Top" Grid.ColumnSpan="2">
+                                <Button x:Name="btnAddP" ToolTip="Dodawanie" Height="28" Width="28" Margin="0,-2,0,-1" Command="{Binding AddCommandPok}" VerticalAlignment="Bottom">
+                                    <Image Source="/DatabaseW;component/Image/add.png" Style="{StaticResource ImageEnabled}"/>
+                                </Button>
+                                <Button x:Name="btnEditP" ToolTip="Edycja" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding EditCommandPok}">
+                                    <Image Source="/DatabaseW;component/Image/edit.png" Style="{StaticResource ImageEnabled}"/>
+                                </Button>
+                                <Button x:Name="btnRemoveP" ToolTip="Usuwanie" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding RemoveCommandPok}">
+                                    <Image Source="/DatabaseW;component/Image/remove.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
+                                </Button>
+                            </ToolBar>
+                            <DataGrid x:Name="dataGridP" Margin="0,30,0,0"
                                     ItemsSource="{Binding DataListPok}"
                                     SelectedItem="{Binding SelectedPok}"
                                     AutoGenerateColumns="False"
                                     SelectionUnit="FullRow"
                                     IsReadOnly="True"
                                     SelectionMode="Single" Grid.ColumnSpan="2">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
-                                <DataGridTextColumn Header="Ilosc osob w pokoju" Binding="{Binding IloscOsobwPokoju}"/>
-                                <DataGridTextColumn Header="Opis" Binding="{Binding Opis}"/>
-                                <DataGridTextColumn Header="Metraż" Binding="{Binding MetrazPokoju}"/>
-                                <DataGridTextColumn Header="Cena" Binding="{Binding CenaWynajmuPokoju}"/>
-                                <DataGridTextColumn Header="Wynajem od" Binding="{Binding OkresWynajmuOd}"/>
-                                <DataGridTextColumn Header="Wynajem do" Binding="{Binding OkresWynajmuOd}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                                    <DataGridTextColumn Header="Ilosc osob w pokoju" Binding="{Binding IloscOsobwPokoju}"/>
+                                    <DataGridTextColumn Header="Opis" Binding="{Binding Opis}"/>
+                                    <DataGridTextColumn Header="Metraż" Binding="{Binding MetrazPokoju}"/>
+                                    <DataGridTextColumn Header="Cena" Binding="{Binding CenaWynajmuPokoju}"/>
+                                    <DataGridTextColumn Header="Wynajem od" Binding="{Binding OkresWynajmuOd, StringFormat=dd/MM/yyyy}"/>
+                                    <DataGridTextColumn Header="Wynajem do" Binding="{Binding OkresWynajmuOd, StringFormat=dd/MM/yyyy}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
+                        <GridSplitter Grid.Column="1" Height="5" VerticalAlignment="Stretch"/>
+                        <Grid Grid.Column="2">
+                            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Wyposażenie pokoju" Width="200" Margin="4,5,-7,59"/>
+                            <ToolBar Height="30" VerticalAlignment="Top" Margin="0,24,0,0">
+                                <Button x:Name="btnAddWP" ToolTip="Dodawanie" Height="28" Width="28" Margin="0,-2,0,-1" Command="{Binding AddCommandWPok}" VerticalAlignment="Bottom">
+                                    <Image Source="/DatabaseW;component/Image/add.png" Style="{StaticResource ImageEnabled}"/>
+                                </Button>
+                                <Button x:Name="btnEditWP" ToolTip="Edycja" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding EditCommandWPok}">
+                                    <Image Source="/DatabaseW;component/Image/edit.png" Style="{StaticResource ImageEnabled}"/>
+                                </Button>
+                                <Button x:Name="btnRemoveWP" ToolTip="Usuwanie" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding RemoveCommandWPok}">
+                                    <Image Source="/DatabaseW;component/Image/remove.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
+                                </Button>
+                            </ToolBar>
+                            <DataGrid x:Name="dataGridWP" Margin="0,54,0,0"
+                                    ItemsSource="{Binding DataListWPok}"
+                                    SelectedItem="{Binding SelectedWPok}"
+                                    AutoGenerateColumns="False"
+                                    SelectionUnit="FullRow"
+                                    IsReadOnly="True"
+                                    SelectionMode="Single">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Opis" Binding="{Binding Wyposazenie.Opis}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Grid>
                     </Grid>
                 </TabItem>
             </TabControl>

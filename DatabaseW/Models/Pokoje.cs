@@ -138,13 +138,6 @@ namespace DatabaseW.Models
                         result += "Pole jest obowiązkowe." + Environment.NewLine;
                     }
                 }
-                if (propertyName == string.Empty || propertyName == "Status")
-                {
-                    if (this.Status != false && this.Status != true)
-                    {
-                        result += "Pole jest obowiązkowe." + Environment.NewLine;
-                    }
-                }
                 return result.TrimEnd();
             }
         }

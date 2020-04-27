@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DatabaseW.Views"
         mc:Ignorable="d"
-        Title="Wyposazenie_nieruchomosciDetail" Height="114.545" Width="340.988" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="Wyposazenie_nieruchomosciDetail" Height="116.545" Width="259.988" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,10 +17,10 @@
         <Label x:Name="lblMetraz" Content="Opis " HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" 
                RenderTransformOrigin="0.169,0.552" Height="25"/>
 
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="67,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="100"
-                 Text="{Binding MetrazNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
-                 ValidatesOnDataErrors=True}"/>
-        <Button x:Name="btnZapisz"  Content="Zapisz" HorizontalAlignment="Left" Margin="128,56,0,0" VerticalAlignment="Top" Width="75" Click="btnZapisz_Click"/>
-        <Button x:Name="btnAnuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="222,56,0,0" VerticalAlignment="Top" Width="75" Click="btnAnuluj_Click"/>
+        <ComboBox x:Name="cmbWyp" HorizontalAlignment="Left" Margin="70,16,0,0" VerticalAlignment="Top" Width="152"
+                  DisplayMemberPath="Opis" SelectedItem="{Binding Wyposazenie, Mode=TwoWay, 
+                  NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <Button x:Name="btnZapisz"  Content="Zapisz" HorizontalAlignment="Left" Margin="53,52,0,0" VerticalAlignment="Top" Width="75" Click="btnZapisz_Click"/>
+        <Button x:Name="btnAnuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="147,52,0,0" VerticalAlignment="Top" Width="75" Click="btnAnuluj_Click" RenderTransformOrigin="-0.593,1"/>
     </Grid>
 </Window>

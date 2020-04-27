@@ -53,9 +53,7 @@ namespace DatabaseW.Views.Pokoje
         {
             try
             {
-                if ((_data.Status = (!false || !true)) ||
-                    (_data.Status != false && _data.Status != false) ||
-                   (_data.IloscOsobwPokoju <= 0) ||
+                if ((_data.IloscOsobwPokoju <= 0) ||
                    string.IsNullOrWhiteSpace(_data.Opis) ||
                    (_data.MetrazPokoju <= 0) ||
                    (_data.CenaWynajmuPokoju <= 0) ||

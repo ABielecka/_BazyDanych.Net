@@ -1,7 +1,11 @@
-﻿using DatabaseW.Views.Nieruchomosci;
+﻿using DatabaseW.Views.APIs;
+using DatabaseW.Views.Nieruchomosci;
+using DatabaseW.Views.Pokoje;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text;
+using System.Web;
 using System.Windows;
 
 namespace DatabaseW.DataViewModel.Nieruchomosci
@@ -9,7 +13,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
     public class NieruchomosciListViewModel : ViewModel
     {
         private ObservableCollection<Models.Nieruchomosci> _dataList = new ObservableCollection<Models.Nieruchomosci>();
-        private ObservableCollection<Models.Wyposazenie_nieruchomosci> _dataListWyp = new ObservableCollection<Models.Wyposazenie_nieruchomosci>();
+        private ObservableCollection<Models.Wyposazenie_nieruchomosci> _dataListW = new ObservableCollection<Models.Wyposazenie_nieruchomosci>();
         private ObservableCollection<Models.Pokoje> _dataListPok = new ObservableCollection<Models.Pokoje>();
         private ObservableCollection<Models.Wyposazenie_pokoju> _dataListWPok = new ObservableCollection<Models.Wyposazenie_pokoju>();
         private NieruchomosciDataService _dataService = new NieruchomosciDataService();
@@ -22,6 +26,8 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         private ViewModelCommand _addCommand = null;
         private ViewModelCommand _editCommand = null;
         private ViewModelCommand _removeCommand = null;
+        private ViewModelCommand _showMapCommand = null;
+        private ViewModelCommand _showSearchCommand = null;
 
         private ViewModelCommand _addCommandW = null;
         private ViewModelCommand _editCommandW = null;
@@ -50,10 +56,10 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             get { return _dataListWPok; }
             set { _dataListWPok = value; NotifyPropertyChanged("DataListWPok"); }
         }
-        public ObservableCollection<Models.Wyposazenie_nieruchomosci> DataListWyp
+        public ObservableCollection<Models.Wyposazenie_nieruchomosci> DataListW
         {
-            get { return _dataListWyp; }
-            set { _dataListWyp = value; NotifyPropertyChanged("DataListWyp"); }
+            get { return _dataListW; }
+            set { _dataListW = value; NotifyPropertyChanged("DataListW"); }
         }
 
         public NieruchomosciDataService DataService
@@ -95,13 +101,13 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             set
             {
                 _selected = value;
-                _dataListWyp.Clear();
+                _dataListW.Clear();
                 _dataListPok.Clear();
                 if (_selected != null)
                 {
                     foreach (Models.Wyposazenie_nieruchomosci obj in _selected.Wyposazenie)
                     {
-                        _dataListWyp.Add(obj);
+                        _dataListW.Add(obj);
                     }
                     foreach (Models.Pokoje obj in _selected.Pokoje)
                     {
@@ -113,6 +119,8 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
                 RemoveCommand.OnCanExecuteChanged();
                 AddCommandW.OnCanExecuteChanged();
                 AddCommandPok.OnCanExecuteChanged();
+                ShowMapCommand.OnCanExecuteChanged();
+                ShowSearchCommand.OnCanExecuteChanged();
             }
         }
         public Models.Wyposazenie_nieruchomosci SelectedW
@@ -121,7 +129,9 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             set
             {
                 _selectedW = value;
-                NotifyPropertyChanged("SelectedWyp");
+                NotifyPropertyChanged("SelectedW");
+                EditCommandW.OnCanExecuteChanged();
+                RemoveCommandW.OnCanExecuteChanged();
             }
         }
         public Models.Pokoje SelectedPok
@@ -139,6 +149,8 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
                     }
                 }
                 NotifyPropertyChanged("SelectedPok");
+                EditCommandPok.OnCanExecuteChanged();
+                RemoveCommandPok.OnCanExecuteChanged();
                 AddCommandWPok.OnCanExecuteChanged();
             }
         }
@@ -149,6 +161,8 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             {
                 _selectedWPok = value;
                 NotifyPropertyChanged("SelectedWyp");
+                EditCommandWPok.OnCanExecuteChanged();
+                RemoveCommandWPok.OnCanExecuteChanged();
             }
         }
 
@@ -186,6 +200,28 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
                     _removeCommand = new ViewModelCommand(p => removeNew(), p => (Selected != null) ? true : false);
                 }
                 return _removeCommand;
+            }
+        }
+        public ViewModelCommand ShowMapCommand
+        {
+            get
+            {
+                if (_showMapCommand == null)
+                {
+                    _showMapCommand = new ViewModelCommand(p => showMapCommand(), p => true);
+                }
+                return _showMapCommand;
+            }
+        }
+        public ViewModelCommand ShowSearchCommand
+        {
+            get
+            {
+                if (_showSearchCommand == null)
+                {
+                    _showSearchCommand = new ViewModelCommand(p => showSearchCommand(), p => true);
+                }
+                return _showSearchCommand;
             }
         }
 
@@ -257,6 +293,46 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+        private void showMapCommand()
+        {
+            try
+            {
+                if (Selected == null) return;
+
+                string url = "https://www.google.com/maps/search/?api=1&";
+
+                string adres = _selected.UlicaNieruchomosci.Trim() + ","
+                                + _selected.MiastoNieruchomosci.Trim()
+                                + "," + _selected.WojewodztwoNieruchomosci.NazwaWojewodztwa.Trim()
+                                + ",Polska";
+                url += "query=" + HttpUtility.UrlEncode(adres, Encoding.UTF8);
+                url += "&t=m";
+
+                MapApiDetail _dlg = new MapApiDetail(url);
+                _dlg.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private void showSearchCommand()
+        {
+            try
+            {
+
+                string adres = _selected.UlicaNieruchomosci.Trim() + ","
+                                + _selected.MiastoNieruchomosci.Trim()
+                                + "," + _selected.WojewodztwoNieruchomosci.NazwaWojewodztwa.Trim()
+                                + ",Polska";
+                PageAPIDetail _dlg = new PageAPIDetail(adres);
+                _dlg.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
         #endregion
 
         #region WyposazenieNieruchomosci
@@ -266,7 +342,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             {
                 if (_addCommandW == null)
                 {
-                    _addCommandW = new ViewModelCommand(p => addNewW(), p => (Selected != null)? true : false);
+                    _addCommandW = new ViewModelCommand(p => addNewW(), p => (Selected != null) ? true : false);
                 }
                 return _addCommandW;
             }
@@ -298,7 +374,22 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         {
             try
             {
-
+                Wyposazenie_nieruchomosciDetail _dlg = new Wyposazenie_nieruchomosciDetail();
+                _dlg.AddNew = true;
+                _dlg.Data = new Models.Wyposazenie_nieruchomosci();
+                _dlg.Closed += (s, ea) =>
+                {
+                    if (_dlg.DialogResult == true)
+                    {
+                        _selected.Wyposazenie.Add(_dlg.Data);
+                        if (_dataService.Update(_selected))
+                        {
+                            _dataService.AreDataLoaded = true;
+                            Selected = _selected;
+                        }
+                    }
+                };
+                _dlg.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -309,6 +400,21 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         {
             try
             {
+                Wyposazenie_nieruchomosciDetail _dlg = new Wyposazenie_nieruchomosciDetail();
+                _dlg.AddNew = false;
+                _dlg.Data = _selectedW;
+                _dlg.Closed += (s, ea) =>
+                {
+                    if (_dlg.DialogResult == true)
+                    {
+                        if (_dataService.Update(_dlg.Data))
+                        {
+                            Selected = _selected;
+                            SelectedW = _dlg.Data;
+                        }
+                    }
+                };
+                _dlg.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -319,6 +425,14 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         {
             try
             {
+                if (MessageBox.Show("Czy chcesz usunąć?", "Pytanie", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    _dataService.AreDataLoaded = true;
+                    if (_dataService.Remove(_selectedW, Selected.IdNieruchomosci))
+                    {
+                        Selected = _selected;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -334,7 +448,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             {
                 if (_addCommandPok == null)
                 {
-                    _addCommandPok = new ViewModelCommand(p => addNewPok(), p => (Selected != null)? true : false);
+                    _addCommandPok = new ViewModelCommand(p => addNewPok(), p => (Selected != null) ? true : false);
                 }
                 return _addCommandPok;
             }
@@ -366,7 +480,22 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         {
             try
             {
-
+                PokojeDetail _dlg = new PokojeDetail();
+                _dlg.AddNew = true;
+                _dlg.Data = new Models.Pokoje();
+                _dlg.Closed += (s, ea) =>
+                {
+                    if (_dlg.DialogResult == true)
+                    {
+                        _selected.Pokoje.Add(_dlg.Data);
+                        if (_dataService.Update(_selected))
+                        {
+                            _dataService.AreDataLoaded = true;
+                            Selected = _selected;
+                        }
+                    }
+                };
+                _dlg.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -377,6 +506,21 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         {
             try
             {
+                PokojeDetail _dlg = new PokojeDetail();
+                _dlg.AddNew = false;
+                _dlg.Data = _selectedPok;
+                _dlg.Closed += (s, ea) =>
+                {
+                    if (_dlg.DialogResult == true)
+                    {
+                        if (_dataService.Update(_dlg.Data))
+                        {
+                            Selected = _selected;
+                            SelectedPok = _dlg.Data;
+                        }
+                    }
+                };
+                _dlg.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -387,6 +531,14 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         {
             try
             {
+                if (MessageBox.Show("Czy chcesz usunąć?", "Pytanie", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    _dataService.AreDataLoaded = true;
+                    if (_dataService.Remove(_selectedPok, Selected.IdNieruchomosci))
+                    {
+                        Selected = _selected;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -402,7 +554,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             {
                 if (_addCommandWPok == null)
                 {
-                    _addCommandWPok = new ViewModelCommand(p => addNewWPok(), p => (Selected != null)? true : false);
+                    _addCommandWPok = new ViewModelCommand(p => addNewWPok(), p => (Selected != null) ? true : false);
                 }
                 return _addCommandWPok;
             }
@@ -434,6 +586,22 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         {
             try
             {
+                Wyposazenie_pokojuDetail _dlg = new Wyposazenie_pokojuDetail();
+                _dlg.AddNew = true;
+                _dlg.Data = new Models.Wyposazenie_pokoju();
+                _dlg.Closed += (s, ea) =>
+                {
+                    if (_dlg.DialogResult == true)
+                    {
+                        _selectedPok.Wyposazenie.Add(_dlg.Data);
+                        if (_dataService.Update(_selectedPok))
+                        {
+                            _dataService.AreDataLoaded = true;
+                            SelectedPok = _selectedPok;
+                        }
+                    }
+                };
+                _dlg.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -444,6 +612,21 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         {
             try
             {
+                Wyposazenie_pokojuDetail _dlg = new Wyposazenie_pokojuDetail();
+                _dlg.AddNew = false;
+                _dlg.Data = _selectedWPok;
+                _dlg.Closed += (s, ea) =>
+                {
+                    if (_dlg.DialogResult == true)
+                    {
+                        if (_dataService.Update(_dlg.Data))
+                        {
+                            SelectedPok = _selectedPok;
+                            SelectedWPok = _dlg.Data;
+                        }
+                    }
+                };
+                _dlg.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -454,6 +637,14 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         {
             try
             {
+                if (MessageBox.Show("Czy chcesz usunąć?", "Pytanie", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    _dataService.AreDataLoaded = true;
+                    if (_dataService.Remove(_selectedWPok, Selected.IdNieruchomosci, SelectedPok.IdPokoju))
+                    {
+                        SelectedPok = _selectedPok;
+                    }
+                }
             }
             catch (Exception ex)
             {

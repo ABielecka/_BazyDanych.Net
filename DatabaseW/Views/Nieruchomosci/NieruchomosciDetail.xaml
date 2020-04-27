@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DatabaseW.Views.Nieruchomosci"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="NieruchomościDetail" Height="703.778" Width="470.195" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
@@ -51,12 +52,22 @@
         <TextBox HorizontalAlignment="Left" Height="228" Margin="124,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="50"
                  Text="{Binding OpisNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
                  ValidatesOnDataErrors=True}"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="100"
+        <xctk:DecimalUpDown HorizontalAlignment="Left" Margin="124,373,0,0" VerticalAlignment="Top" Width="85" Height="23" Increment="1"
+                            Watermark="" 
+                            FormatString="F2"
+                            Value="{Binding MetrazNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                            ValidatesOnDataErrors=True}"/>
+        <!--<TextBox HorizontalAlignment="Left" Height="23" Margin="124,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="100"
                  Text="{Binding MetrazNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
-                 ValidatesOnDataErrors=True}"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="124,401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="100"
+                 ValidatesOnDataErrors=True}"/>-->
+        <xctk:DecimalUpDown HorizontalAlignment="Left" Margin="124,401,0,0" VerticalAlignment="Top" Width="85" Height="23" Increment="1"
+                            Watermark="" 
+                            FormatString="F2"
+                            Value="{Binding CenaWynajmuNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                            ValidatesOnDataErrors=True}"/>
+        <!--<TextBox HorizontalAlignment="Left" Height="23" Margin="124,401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="100"
                  Text="{Binding CenaWynajmuNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
-                 ValidatesOnDataErrors=True}"/>
+                 ValidatesOnDataErrors=True}"/>-->
         <DatePicker HorizontalAlignment="Left" Margin="124,429,0,0" VerticalAlignment="Top" Width="152"
                     SelectedDate="{Binding OkresWynajmuOd, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged,
                     ValidatesOnDataErrors=True}"/>
@@ -74,5 +85,7 @@
                  ValidatesOnDataErrors=True}"/>
         <Button x:Name="btnZapisz"  Content="Zapisz" HorizontalAlignment="Left" Margin="185,597,0,0" VerticalAlignment="Top" Width="75" Click="btnZapisz_Click"/>
         <Button x:Name="btnAnuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="279,597,0,0" VerticalAlignment="Top" Width="75" Click="btnAnuluj_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="227,380,0,0" TextWrapping="Wrap" Text="m2" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="227,408,0,0" TextWrapping="Wrap" Text="zł" VerticalAlignment="Top"/>
     </Grid>
 </Window>

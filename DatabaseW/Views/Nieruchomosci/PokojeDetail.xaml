@@ -28,20 +28,21 @@
         <Label x:Name="lblDo" Content="Wynajem do" HorizontalAlignment="Left" Margin="10,399,0,0" VerticalAlignment="Top" 
                RenderTransformOrigin="0.169,0.552" Height="27"/>
 
-        <CheckBox x:Name="ckbStat" HorizontalAlignment="Left" Margin="144,20,0,0" VerticalAlignment="Top"
+        <CheckBox x:Name="ckbStatPok" HorizontalAlignment="Left" Margin="144,20,0,0" VerticalAlignment="Top"
                   IsChecked="{Binding Status, Mode=TwoWay, NotifyOnValidationError=True, 
                   UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="16"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="144,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" MaxLength="50"
-                 Text="{Binding MiastoNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
-                 ValidatesOnDataErrors=True}"/>
+        
+        <!--<TextBox HorizontalAlignment="Left" Height="23" Margin="144,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" MaxLength="50"
+                 Text="{Binding IloscOsobwPokoju, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                 ValidatesOnDataErrors=True}"/>-->
         <TextBox HorizontalAlignment="Left" Height="228" Margin="144,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="50"
-                 Text="{Binding OpisNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                 Text="{Binding Opis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
                  ValidatesOnDataErrors=True}"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="144,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="100"
-                 Text="{Binding MetrazNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                 Text="{Binding MetrazPokoju, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
                  ValidatesOnDataErrors=True}"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="144,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="100"
-                 Text="{Binding CenaWynajmuNieruchomosci, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                 Text="{Binding CenaWynajmuPokoju, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
                  ValidatesOnDataErrors=True}"/>
         <DatePicker HorizontalAlignment="Left" Margin="144,368,0,0" VerticalAlignment="Top" Width="152"
                     SelectedDate="{Binding OkresWynajmuOd, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged,

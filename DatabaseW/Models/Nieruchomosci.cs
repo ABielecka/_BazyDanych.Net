@@ -48,7 +48,6 @@ namespace DatabaseW.Models
             _typNieruchomosci = typNieruchomosci;
             _osobaWynajmujaca = osobaWynajmujaca;
         }
-
         #endregion Constructors
 
         #region Public Attributes

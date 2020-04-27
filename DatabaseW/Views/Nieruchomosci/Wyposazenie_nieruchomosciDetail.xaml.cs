@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 
 namespace DatabaseW.Views.Nieruchomosci
@@ -31,6 +32,7 @@ namespace DatabaseW.Views.Nieruchomosci
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            cmbWyp.ItemsSource = App._oSlownik_wyposazen.DataList.OrderBy(k => k.Opis);
             if (!_addNew)
             {
                 _dataOld = new Models.Wyposazenie_nieruchomosci()
