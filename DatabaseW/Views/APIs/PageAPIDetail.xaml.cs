@@ -95,6 +95,11 @@ namespace DatabaseW.Views.APIs
         {
             try
             {
+                if (cmbSearch.SelectedItem == null)
+                {
+                    MessageBox.Show("Proszę wybrać typ POI z listy", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
                 _dataList = new ObservableCollection<Models.Local.PageAPI>();
                 string url = cmbSearch.SelectedItem.ToString().Trim() + "+in+" + txtAdres.Text.Trim();
                 url = GooglePlaceUrl(url);
