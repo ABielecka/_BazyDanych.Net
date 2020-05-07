@@ -320,12 +320,6 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         {
             try
             {
-
-                string adres = _selected.UlicaNieruchomosci.Trim() + ","
-                                + _selected.MiastoNieruchomosci.Trim()
-                                + "," + _selected.WojewodztwoNieruchomosci.NazwaWojewodztwa.Trim()
-                                + ",Polska";
-                PageAPIDetail _dlg = new PageAPIDetail(adres);
                 _dlg.ShowDialog();
             }
             catch (Exception ex)
