@@ -44,6 +44,7 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -59,6 +60,7 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -74,6 +76,7 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -90,6 +93,7 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }

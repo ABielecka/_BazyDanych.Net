@@ -320,7 +320,6 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         {
             try
             {
-                _dlg.ShowDialog();
             }
             catch (Exception ex)
             {

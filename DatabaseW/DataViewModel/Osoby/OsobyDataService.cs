@@ -48,6 +48,7 @@ namespace DatabaseW.DataViewModel.Osoby
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -63,6 +64,7 @@ namespace DatabaseW.DataViewModel.Osoby
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -78,6 +80,7 @@ namespace DatabaseW.DataViewModel.Osoby
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -94,6 +97,7 @@ namespace DatabaseW.DataViewModel.Osoby
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }

@@ -47,9 +47,11 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
                     _dataList.Add(us);
                 }
                 OnDataLoaded();
+                App.loggerFile.Info("Poprawnie załadowana informacja.");
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -65,6 +67,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -80,6 +83,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -96,6 +100,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -113,6 +118,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -131,6 +137,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -149,6 +156,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -167,6 +175,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -185,6 +194,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
@@ -206,6 +216,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             }
             catch (Exception ex)
             {
+                App.loggerFile.Error(ex, "Error!");
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
