@@ -1,0 +1,14 @@
+﻿<Window x:Class="DatabaseW.Views.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DatabaseW.Views"
+        mc:Ignorable="d"
+        Title="Login" Height="192.698" Width="640.718" Loaded="Window_Loaded" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button x:Name="btn_login" Content="Log in" HorizontalAlignment="Left" Margin="400,118,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="2.184,2.893" Click="btn_login_Click"/>
+        <Button x:Name="btn_exit" Content="Exit" HorizontalAlignment="Left" Margin="532,118,0,0" VerticalAlignment="Top" Width="75" Click="btn_exit_Click"/>
+
+    </Grid>
+</Window>

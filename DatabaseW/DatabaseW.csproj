@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7158993E-8661-495B-AF9F-B2A7D2E1AEC1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DatabaseW</RootNamespace>
+    <AssemblyName>DatabaseW</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.IndexingExtensions, Version=1.0.1.26117, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.IndexingExtensions.1.0.1\lib\net40\EntityFramework.IndexingExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.19.6.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.19.6.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="DataViewModel\GetData.xaml.cs">
+      <DependentUpon>GetData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataViewModel\LoadDataStart.cs" />
+    <Compile Include="DataViewModel\Najem\NajemDataService.cs" />
+    <Compile Include="DataViewModel\Najem\NajemListViewModel.cs" />
+    <Compile Include="DataViewModel\Nieruchomosci\NieruchomosciDataService.cs" />
+    <Compile Include="DataViewModel\Nieruchomosci\NieruchomosciListViewModel.cs" />
+    <Compile Include="DataViewModel\Osoby\OsobyDataService.cs" />
+    <Compile Include="DataViewModel\Osoby\OsobyListViewModel.cs" />
+    <Compile Include="DataViewModel\Slownik_Wojewodztw\Slownik_WojewodztwDataService.cs" />
+    <Compile Include="DataViewModel\Slownik_Wojewodztw\Slownik_WojewodztwListViewModel.cs" />
+    <Compile Include="DataViewModel\Slownik_wyposazen\Slownik_wyposazenDataService.cs" />
+    <Compile Include="DataViewModel\Slownik_wyposazen\Slownik_wyposazenListViewModel.cs" />
+    <Compile Include="DataViewModel\Typ_nieruchomosci\Typ_nieruchomosciDataService.cs" />
+    <Compile Include="DataViewModel\Typ_nieruchomosci\Typ_nieruchomosciListViewModel.cs" />
+    <Compile Include="Models\Local\PageAPI.cs" />
+    <Compile Include="Views\APIs\MapApiDetail.xaml.cs">
+      <DependentUpon>MapApiDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\APIs\PageAPIDetail.xaml.cs">
+      <DependentUpon>PageAPIDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Najem\NajemList.xaml.cs">
+      <DependentUpon>NajemList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Nieruchomosci\NieruchomosciDetail.xaml.cs">
+      <DependentUpon>NieruchomosciDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Nieruchomosci\NieruchomosciList.xaml.cs">
+      <DependentUpon>NieruchomosciList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Nieruchomosci\PokojeDetail.xaml.cs">
+      <DependentUpon>PokojeDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Nieruchomosci\Wyposazenie_nieruchomosciDetail.xaml.cs">
+      <DependentUpon>Wyposazenie_nieruchomosciDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Nieruchomosci\Wyposazenie_pokojuDetail.xaml.cs">
+      <DependentUpon>Wyposazenie_pokojuDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Osoby\OsobyDetail.xaml.cs">
+      <DependentUpon>OsobyDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Osoby\OsobyList.xaml.cs">
+      <DependentUpon>OsobyList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Slownik_Wojewodztw\Slownik_WojewodztwDetail.xaml.cs">
+      <DependentUpon>Slownik_WojewodztwDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Slownik_Wojewodztw\Slownik_WojewodztwList.xaml.cs">
+      <DependentUpon>Slownik_WojewodztwList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Slownik_wyposazen\Slownik_wyposazenDetail.xaml.cs">
+      <DependentUpon>Slownik_wyposazenDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Slownik_wyposazen\Slownik_wyposazenList.xaml.cs">
+      <DependentUpon>Slownik_wyposazenList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Typ_nieruchomosci\Typ_nieruchomosciDetail.xaml.cs">
+      <DependentUpon>Typ_nieruchomosciDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Typ_nieruchomosci\Typ_nieruchomosciList.xaml.cs">
+      <DependentUpon>Typ_nieruchomosciList.xaml</DependentUpon>
+    </Compile>
+    <Page Include="DataViewModel\GetData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\APIs\MapApiDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\APIs\PageAPIDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Najem\NajemList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Nieruchomosci\NieruchomosciDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Nieruchomosci\NieruchomosciList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Nieruchomosci\PokojeDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Nieruchomosci\Wyposazenie_nieruchomosciDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Nieruchomosci\Wyposazenie_pokojuDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Osoby\OsobyDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Osoby\OsobyList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Slownik_Wojewodztw\Slownik_WojewodztwDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Slownik_Wojewodztw\Slownik_WojewodztwList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Slownik_wyposazen\Slownik_wyposazenDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Slownik_wyposazen\Slownik_wyposazenList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Typ_nieruchomosci\Typ_nieruchomosciDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Typ_nieruchomosci\Typ_nieruchomosciList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataViewModel\ViewModel.cs" />
+    <Compile Include="DataViewModel\ViewModelCommand.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\Mapping\NieruchomosciMap.cs" />
+    <Compile Include="Models\Mapping\OsobyMap.cs" />
+    <Compile Include="Models\Mapping\PokojeMap.cs" />
+    <Compile Include="Models\Mapping\Slownik_WojewodztwMap.cs" />
+    <Compile Include="Models\Mapping\Typ_nieruchomosciMap.cs" />
+    <Compile Include="Models\Mapping\NajemMap.cs" />
+    <Compile Include="Models\Mapping\Wyposazenie_nieruchomosciMap.cs" />
+    <Compile Include="Models\Mapping\Wyposazenie_pokojuMap.cs" />
+    <Compile Include="Models\Nieruchomosci.cs" />
+    <Compile Include="Models\Osoby.cs" />
+    <Compile Include="Models\Pokoje.cs" />
+    <Compile Include="Models\Slownik_wyposazen.cs" />
+    <Compile Include="Models\Mapping\Slownik_wyposazenMap.cs" />
+    <Compile Include="Models\Typ_nieruchomosci.cs" />
+    <Compile Include="Models\Slownik_Wojewodztw.cs" />
+    <Compile Include="Models\Najem.cs" />
+    <Compile Include="Models\Wyposazenie_nieruchomosci.cs" />
+    <Compile Include="Models\Wyposazenie_pokoju.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Image\add.png" />
+    <Resource Include="Image\edit.png" />
+    <Resource Include="Image\remove.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
