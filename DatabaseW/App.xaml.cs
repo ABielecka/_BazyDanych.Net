@@ -17,7 +17,8 @@ namespace DatabaseW
 {
     public partial class App : Application
     {
-        public static string _conString = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = A-nna)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = XE))); User Id = PROPERTY_RENT; Password = Losos123";
+        //public static string _conString = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = A-nna)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = XE))); User Id = PROPERTY_RENT; Password = Losos123";
+        public static string _conString = "Data Source = (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = DESKTOP-I0C0U32)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = XE))); User Id = PROPERTY_RENT; Password = Alicja1234";
         private static Context _context;
 
         //Modele
