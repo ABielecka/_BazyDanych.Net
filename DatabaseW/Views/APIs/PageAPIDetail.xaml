@@ -16,6 +16,8 @@
             <Label Content="Wyszukaj:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
             <Button x:Name="btnSearch" Content="Szukaj" HorizontalAlignment="Left" Margin="291,16,0,0" VerticalAlignment="Top" Width="75" Click="btnSearch_Click" />
             <TextBox x:Name="txtAdres" Height="23" Margin="391,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" IsReadOnly="true" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+            <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  Name="txtDistance" Text="TextBox" VerticalAlignment="Top" Width="203" Margin="391,36,0,-4" IsReadOnly="True"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,36,0,-4" Name="txtDuration" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="157"/>
         </Grid>
         <Grid Margin="0,60,0,0">
             <Grid.ColumnDefinitions>
@@ -45,7 +47,11 @@
             </Grid>
             <GridSplitter Grid.Column="1" Height="5" VerticalAlignment="Stretch"/>
             <Grid Grid.Column="2">
-                <WebBrowser  Name="WbMapSearch" Navigated="WbMapSearch_Navigated" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="27*"/>
+                    <ColumnDefinition Width="8*"/>
+                </Grid.ColumnDefinitions>
+                <WebBrowser  Name="WbMapSearch" Navigated="WbMapSearch_Navigated" Grid.ColumnSpan="2" />
             </Grid>
         </Grid>
     </Grid>

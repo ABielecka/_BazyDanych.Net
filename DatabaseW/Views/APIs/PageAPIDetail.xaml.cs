@@ -8,9 +8,20 @@ using System.Text;
 using System.Web;
 using System.Windows;
 using System.Windows.Controls;
+using System.IO;
+using System.Data;
+using System.Xml;
+using System.Security.Policy;
+using System.Linq;
 
 namespace DatabaseW.Views.APIs
 {
+    
+    public class vmDistance
+    {
+        public string durtion { get; set; }
+        public double distance { get; set; }
+    }
     public partial class PageAPIDetail : Window
     {
         private string _adres;
@@ -28,6 +39,7 @@ namespace DatabaseW.Views.APIs
         {
             _adres = adres;
             InitializeComponent();
+            
         }
 
 
@@ -39,16 +51,17 @@ namespace DatabaseW.Views.APIs
             cmbSearch.Items.Add("Bar");
             cmbSearch.Items.Add("Restauracja");
             cmbSearch.Items.Add("Szkoła");
-            //tu można dodać więcej opcji
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
+            cmbSearch.Items.Add("Apteka");
+            cmbSearch.Items.Add("Kino");
+            cmbSearch.Items.Add("Teatr");
+            cmbSearch.Items.Add("Sklep");
+            cmbSearch.Items.Add("Lotnisko");
+            cmbSearch.Items.Add("Ratusz");
+            cmbSearch.Items.Add("Drukarnia");
+            cmbSearch.Items.Add("Galeria");
+            cmbSearch.Items.Add("Uczelnia");
+            cmbSearch.Items.Add("Park");
+            cmbSearch.Items.Add("Siłownia");
         }
 
         private void WbMapSearch_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
@@ -73,6 +86,7 @@ namespace DatabaseW.Views.APIs
                 {
                     webBrowser.GetType().InvokeMember("Silent", BindingFlags.Instance | BindingFlags.Public | BindingFlags.PutDispProperty, null, webBrowser, new object[] { silent });
                 }
+
             }
         }
 
@@ -129,16 +143,45 @@ namespace DatabaseW.Views.APIs
             }
         }
 
+        
         private void btnDistance_Click(object sender, RoutedEventArgs e)
         {
+            vmDistance objDistance = new vmDistance();
             try
             {
-                //metoda dla Distance Matrix 
+                string DistanceApiUrl = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=";
+                string myKey = "AIzaSyDxAC7sQJdA9a9LUIjmqf13oEY-whT8CEI";
+                _selected.FormattedAddress = string.Concat(Selected.FormattedAddress.Where(c => !char.IsWhiteSpace(c)));
+                _selected.FormattedAddress = _selected.FormattedAddress.Replace(',', '+');
+                _adres = string.Concat(txtAdres.Text.Where(c => !char.IsWhiteSpace(c)));
+                _adres = _adres.Replace(',', '+');
+                string url = DistanceApiUrl + _adres.Trim() + "&destinations=" + _selected.FormattedAddress.Trim() + "&mode=driving&sensor=false&language=en-EN&units=imperial" + "&key=" + myKey;
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                WebResponse response = request.GetResponse();
+                Stream dataStream = response.GetResponseStream();
+                StreamReader sreader = new StreamReader(dataStream);
+                string responsereader = sreader.ReadToEnd();
+                response.Close();
+
+                DataSet ds = new DataSet();
+                ds.ReadXml(new XmlTextReader(new StringReader(responsereader)));
+                if (ds.Tables.Count > 0)
+                {
+                    if (ds.Tables["element"].Rows[0]["status"].ToString() == "OK")
+                    {
+                        objDistance.durtion = Convert.ToString(ds.Tables["duration"].Rows[0]["text"].ToString().Trim());
+                        objDistance.distance = Convert.ToDouble(ds.Tables["distance"].Rows[0]["text"].ToString().Replace("ft", "").Trim());
+                    }
+                }
+                txtDuration.Text = objDistance.durtion;
+                txtDistance.Text = Convert.ToString(objDistance.distance);
             }
             catch (Exception ex)
             {
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+     
     }
 }
