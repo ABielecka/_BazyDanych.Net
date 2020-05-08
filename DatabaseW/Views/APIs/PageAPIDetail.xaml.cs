@@ -51,16 +51,17 @@ namespace DatabaseW.Views.APIs
             cmbSearch.Items.Add("Bar");
             cmbSearch.Items.Add("Restauracja");
             cmbSearch.Items.Add("Szkoła");
-            //tu można dodać więcej opcji
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
-            //////////////////////////////////////////////////
+            cmbSearch.Items.Add("Apteka");
+            cmbSearch.Items.Add("Kino");
+            cmbSearch.Items.Add("Teatr");
+            cmbSearch.Items.Add("Sklep");
+            cmbSearch.Items.Add("Lotnisko");
+            cmbSearch.Items.Add("Ratusz");
+            cmbSearch.Items.Add("Drukarnia");
+            cmbSearch.Items.Add("Galeria");
+            cmbSearch.Items.Add("Uczelnia");
+            cmbSearch.Items.Add("Park");
+            cmbSearch.Items.Add("Siłownia");
         }
 
         private void WbMapSearch_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
@@ -148,34 +149,31 @@ namespace DatabaseW.Views.APIs
             vmDistance objDistance = new vmDistance();
             try
             {
-                
-                string DistanceApiUrl = "http://maps.googleapis.com/maps/api/distancematrix/xml?origins=";
+                string DistanceApiUrl = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=";
                 string myKey = "AIzaSyDxAC7sQJdA9a9LUIjmqf13oEY-whT8CEI";
-                string dest = string.Concat(Selected.FormattedAddress.Where(c => !char.IsWhiteSpace(c)));
-                dest = dest.Replace(',', '+');
-                string doc = string.Concat(txtAdres.Text.Where(c => !char.IsWhiteSpace(c)));
-                doc = doc.Replace(',', '+');
-                string url = @"http://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + dest + "&destinations=" + doc+"&mode=driving&sensor=false&language=en-EN&units=imperial&Key=" + myKey;
+                _selected.FormattedAddress = string.Concat(Selected.FormattedAddress.Where(c => !char.IsWhiteSpace(c)));
+                _selected.FormattedAddress = _selected.FormattedAddress.Replace(',', '+');
+                _adres = string.Concat(txtAdres.Text.Where(c => !char.IsWhiteSpace(c)));
+                _adres = _adres.Replace(',', '+');
+                string url = DistanceApiUrl + _adres.Trim() + "&destinations=" + _selected.FormattedAddress.Trim() + "&mode=driving&sensor=false&language=en-EN&units=imperial" + "&key=" + myKey;
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 WebResponse response = request.GetResponse();
                 Stream dataStream = response.GetResponseStream();
                 StreamReader sreader = new StreamReader(dataStream);
                 string responsereader = sreader.ReadToEnd();
                 response.Close();
-                
-                
-                XmlDocument xmldoc = new XmlDocument();
-                xmldoc.LoadXml(responsereader);
 
-
-                if (xmldoc.GetElementsByTagName("status")[0].ChildNodes[0].InnerText == "OK")
+                DataSet ds = new DataSet();
+                ds.ReadXml(new XmlTextReader(new StringReader(responsereader)));
+                if (ds.Tables.Count > 0)
                 {
-                    XmlNodeList distance = xmldoc.GetElementsByTagName("distance");
-                    objDistance.distance= Convert.ToDouble(distance[0].ChildNodes[1].InnerText.Replace(" mi", ""));
+                    if (ds.Tables["element"].Rows[0]["status"].ToString() == "OK")
+                    {
+                        objDistance.durtion = Convert.ToString(ds.Tables["duration"].Rows[0]["text"].ToString().Trim());
+                        objDistance.distance = Convert.ToDouble(ds.Tables["distance"].Rows[0]["text"].ToString().Replace("ft", "").Trim());
+                    }
                 }
-
-                
-                //txtDuration.Text = objDistance.durtion;
+                txtDuration.Text = objDistance.durtion;
                 txtDistance.Text = Convert.ToString(objDistance.distance);
             }
             catch (Exception ex)
