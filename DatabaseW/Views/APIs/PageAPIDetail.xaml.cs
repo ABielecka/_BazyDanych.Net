@@ -148,32 +148,34 @@ namespace DatabaseW.Views.APIs
             vmDistance objDistance = new vmDistance();
             try
             {
-                WbMapSearch.Navigate("https://www.google.co.in/maps");
+                
                 string DistanceApiUrl = "http://maps.googleapis.com/maps/api/distancematrix/xml?origins=";
                 string myKey = "AIzaSyDxAC7sQJdA9a9LUIjmqf13oEY-whT8CEI";
                 string dest = string.Concat(Selected.FormattedAddress.Where(c => !char.IsWhiteSpace(c)));
                 dest = dest.Replace(',', '+');
                 string doc = string.Concat(txtAdres.Text.Where(c => !char.IsWhiteSpace(c)));
                 doc = doc.Replace(',', '+');
-                string url = DistanceApiUrl +dest + "&destinations=" + doc+"&mode=driving&sensor=false&language=en-EN&units=imperial&Key=" + myKey;
+                string url = @"http://maps.googleapis.com/maps/api/distancematrix/xml?origins=" + dest + "&destinations=" + doc+"&mode=driving&sensor=false&language=en-EN&units=imperial&Key=" + myKey;
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 WebResponse response = request.GetResponse();
                 Stream dataStream = response.GetResponseStream();
                 StreamReader sreader = new StreamReader(dataStream);
                 string responsereader = sreader.ReadToEnd();
                 response.Close();
-                DataSet ds = new DataSet();
-                ds.ReadXml(new XmlTextReader(new StringReader(responsereader)));
-                if (ds.Tables.Count > 0)
-                {
+                
+                
+                XmlDocument xmldoc = new XmlDocument();
+                xmldoc.LoadXml(responsereader);
 
-                    if (ds.Tables["element"].Rows[0]["status"].ToString() == "OK")
-                    {
-                        objDistance.durtion = Convert.ToString(ds.Tables["duration"].Rows[0]["text"].ToString().Trim());
-                        objDistance.distance = Convert.ToDouble(ds.Tables["distance"].Rows[0]["text"].ToString().Replace("mi", "").Trim());
-                    }
+
+                if (xmldoc.GetElementsByTagName("status")[0].ChildNodes[0].InnerText == "OK")
+                {
+                    XmlNodeList distance = xmldoc.GetElementsByTagName("distance");
+                    objDistance.distance= Convert.ToDouble(distance[0].ChildNodes[1].InnerText.Replace(" mi", ""));
                 }
-                txtDuration.Text = objDistance.durtion;
+
+                
+                //txtDuration.Text = objDistance.durtion;
                 txtDistance.Text = Convert.ToString(objDistance.distance);
             }
             catch (Exception ex)
