@@ -143,7 +143,14 @@ namespace DatabaseW.Views.APIs
             }
         }
 
-        
+        //private string GooglDistanceMatrixUrl(string input)
+        //{
+        //    string url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=";
+        //    url += input;
+        //    url += "&key=AIzaSyDxAC7sQJdA9a9LUIjmqf13oEY-whT8CEI";
+        //    return url;
+        //}
+
         private void btnDistance_Click(object sender, RoutedEventArgs e)
         {
             vmDistance objDistance = new vmDistance();
@@ -181,7 +188,5 @@ namespace DatabaseW.Views.APIs
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-     
     }
 }

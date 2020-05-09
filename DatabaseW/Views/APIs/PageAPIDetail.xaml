@@ -5,19 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DatabaseW.Views.APIs"
         mc:Ignorable="d"
-        Title="PageAPIDetail" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" >
+        Title="PageAPIDetail" Height="480" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" >
     <Grid>
-        <Grid Margin="0,0,0,364">
+        <Grid Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="151*"/>
-                <ColumnDefinition Width="47*"/>
+                <ColumnDefinition Width="357*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="19*"/>
             </Grid.ColumnDefinitions>
-            <ComboBox x:Name="cmbSearch" HorizontalAlignment="Left" Margin="93,14,0,0" VerticalAlignment="Top" Width="185"/>
-            <Label Content="Wyszukaj:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <Button x:Name="btnSearch" Content="Szukaj" HorizontalAlignment="Left" Margin="291,16,0,0" VerticalAlignment="Top" Width="75" Click="btnSearch_Click" />
-            <TextBox x:Name="txtAdres" Height="23" Margin="391,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" IsReadOnly="true" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
-            <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap"  Name="txtDistance" Text="TextBox" VerticalAlignment="Top" Width="203" Margin="391,36,0,-4" IsReadOnly="True"/>
-            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="10,36,0,-4" Name="txtDuration" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="157"/>
+            <ComboBox x:Name="cmbSearch" HorizontalAlignment="Left" Margin="93,14,0,0" VerticalAlignment="Top" Width="185" Height="22"/>
+            <Label Content="Wyszukaj:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="62"/>
+            <Button x:Name="btnSearch" Content="Szukaj" HorizontalAlignment="Left" Margin="296,16,0,0" VerticalAlignment="Top" Width="75" Click="btnSearch_Click" Height="20" />
+            <TextBox x:Name="txtAdres" Height="23" Margin="402,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" IsReadOnly="true" HorizontalAlignment="Left" Grid.ColumnSpan="3"/>
+            <TextBox Name="txtDistance" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" Margin="441,42,0,0" IsReadOnly="True" RenderTransformOrigin="0.487,0.652"/>
+            <TextBox Name="txtDuration" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Margin="590,42,0,0" Width="40" IsReadOnly="True" RenderTransformOrigin="-1.825,0.174"/>
+            <Label Content="Odl:" HorizontalAlignment="Left" Margin="402,42,0,0" VerticalAlignment="Top" Height="23" Width="34"/>
+            <Label Content="Czas podróży:" HorizontalAlignment="Left" Margin="501,42,0,0" VerticalAlignment="Top" Height="29" Width="84"/>
         </Grid>
         <Grid Margin="0,60,0,0">
             <Grid.ColumnDefinitions>
@@ -31,7 +34,7 @@
                           AutoGenerateColumns="False"
                           SelectionUnit="FullRow"
                           IsReadOnly="True"
-                          SelectionMode="Single" Grid.ColumnSpan="2">
+                          SelectionMode="Single" Margin="0,10,0,0">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>
@@ -45,13 +48,14 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
-            <GridSplitter Grid.Column="1" Height="5" VerticalAlignment="Stretch"/>
+            <GridSplitter Grid.Column="1" Height="5" HorizontalAlignment="Stretch"/>
             <Grid Grid.Column="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="27*"/>
-                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="169*"/>
+                    <ColumnDefinition Width="237*"/>
+                    <ColumnDefinition Width="120*"/>
                 </Grid.ColumnDefinitions>
-                <WebBrowser  Name="WbMapSearch" Navigated="WbMapSearch_Navigated" Grid.ColumnSpan="2" />
+                <WebBrowser  Name="WbMapSearch" Navigated="WbMapSearch_Navigated" Grid.ColumnSpan="3" Margin="0,10,0,0" />
             </Grid>
         </Grid>
     </Grid>

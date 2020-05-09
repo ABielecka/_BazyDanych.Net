@@ -10,6 +10,8 @@ namespace DatabaseW.Models.Local
         private string lng;
         private string name;
         private string place_id;
+        private string distance;
+        private string duration;
         #endregion Private Members
 
         #region Constructors
@@ -47,6 +49,18 @@ namespace DatabaseW.Models.Local
         {
             get { return place_id; }
             set { place_id = value; NotifyPropertyChanged("Place_id"); }
+        }
+
+        public string Distance
+        {
+            get { return distance; }
+            set { distance = value; NotifyPropertyChanged("Place_id"); }
+        }
+
+        public string Duration
+        {
+            get { return duration; }
+            set { duration = value; NotifyPropertyChanged("Place_id"); }
         }
         #endregion Public Attributes
     }
