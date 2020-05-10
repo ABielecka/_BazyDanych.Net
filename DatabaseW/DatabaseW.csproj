@@ -312,7 +312,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Image\add.png" />
     <Resource Include="Image\edit.png" />

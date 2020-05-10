@@ -151,6 +151,29 @@ namespace DatabaseW.Views.APIs
         //    return url;
         //}
 
+        public vmDistance DistanceAndDuration(string url)
+        {
+            vmDistance objDistance = new vmDistance();
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            WebResponse response = request.GetResponse();
+            Stream dataStream = response.GetResponseStream();
+            StreamReader sreader = new StreamReader(dataStream);
+            string responsereader = sreader.ReadToEnd();
+            response.Close();
+
+            DataSet ds = new DataSet();
+            ds.ReadXml(new XmlTextReader(new StringReader(responsereader)));
+            if (ds.Tables.Count > 0)
+            {
+                if (ds.Tables["element"].Rows[0]["status"].ToString() == "OK")
+                {
+                    objDistance.durtion = Convert.ToString(ds.Tables["duration"].Rows[0]["text"].ToString().Trim());
+                    objDistance.distance = Convert.ToDouble(ds.Tables["distance"].Rows[0]["text"].ToString().Replace("ft", "").Trim());
+                }
+            }
+            return objDistance;
+        }
+
         private void btnDistance_Click(object sender, RoutedEventArgs e)
         {
             vmDistance objDistance = new vmDistance();
@@ -163,23 +186,7 @@ namespace DatabaseW.Views.APIs
                 _adres = string.Concat(txtAdres.Text.Where(c => !char.IsWhiteSpace(c)));
                 _adres = _adres.Replace(',', '+');
                 string url = DistanceApiUrl + _adres.Trim() + "&destinations=" + _selected.FormattedAddress.Trim() + "&mode=driving&sensor=false&language=en-EN&units=imperial" + "&key=" + myKey;
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                WebResponse response = request.GetResponse();
-                Stream dataStream = response.GetResponseStream();
-                StreamReader sreader = new StreamReader(dataStream);
-                string responsereader = sreader.ReadToEnd();
-                response.Close();
-
-                DataSet ds = new DataSet();
-                ds.ReadXml(new XmlTextReader(new StringReader(responsereader)));
-                if (ds.Tables.Count > 0)
-                {
-                    if (ds.Tables["element"].Rows[0]["status"].ToString() == "OK")
-                    {
-                        objDistance.durtion = Convert.ToString(ds.Tables["duration"].Rows[0]["text"].ToString().Trim());
-                        objDistance.distance = Convert.ToDouble(ds.Tables["distance"].Rows[0]["text"].ToString().Replace("ft", "").Trim());
-                    }
-                }
+                objDistance =DistanceAndDuration(url);
                 txtDuration.Text = objDistance.durtion;
                 txtDistance.Text = Convert.ToString(objDistance.distance);
             }
