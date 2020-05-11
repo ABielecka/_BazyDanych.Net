@@ -151,7 +151,7 @@ namespace DatabaseW.Views.APIs
         //    return url;
         //}
 
-        public vmDistance DistanceAndDuration(string url)
+        public static vmDistance DistanceAndDuration(string url)
         {
             vmDistance objDistance = new vmDistance();
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
