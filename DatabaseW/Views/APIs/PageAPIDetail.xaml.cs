@@ -174,6 +174,36 @@ namespace DatabaseW.Views.APIs
             return objDistance;
         }
 
+        public static string TrimAddress(string address)
+        {
+            string pom = string.Concat(address.Where(c => !char.IsWhiteSpace(c)));
+            pom= pom.Replace(',', '+');
+            for (int i = 0; i < pom.Length; i++)
+            {
+                if (pom[i] == '+')
+                {
+                    if (pom[++i] == '+')
+                    {
+                        pom = pom.Remove(i, 1);
+                        i--;
+                    }
+                    else if (Char.IsNumber(pom[++i]))
+                    {
+                        --i; --i;
+                        if (Char.IsLetter(pom[--i]))
+                        {
+                            pom = pom.Remove(++i, 1);
+                        }
+                        ++i; ++i;
+                    }
+                    i--;
+                }
+
+            }
+
+            return pom;
+        }
+
         private void btnDistance_Click(object sender, RoutedEventArgs e)
         {
             vmDistance objDistance = new vmDistance();
@@ -181,10 +211,8 @@ namespace DatabaseW.Views.APIs
             {
                 string DistanceApiUrl = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=";
                 string myKey = "AIzaSyDxAC7sQJdA9a9LUIjmqf13oEY-whT8CEI";
-                _selected.FormattedAddress = string.Concat(Selected.FormattedAddress.Where(c => !char.IsWhiteSpace(c)));
-                _selected.FormattedAddress = _selected.FormattedAddress.Replace(',', '+');
-                _adres = string.Concat(txtAdres.Text.Where(c => !char.IsWhiteSpace(c)));
-                _adres = _adres.Replace(',', '+');
+                _selected.FormattedAddress=TrimAddress(Selected.FormattedAddress);
+                _adres = TrimAddress(txtAdres.Text);
                 string url = DistanceApiUrl + _adres.Trim() + "&destinations=" + _selected.FormattedAddress.Trim() + "&mode=driving&sensor=false&language=en-EN&units=imperial" + "&key=" + myKey;
                 objDistance =DistanceAndDuration(url);
                 txtDuration.Text = objDistance.durtion;
