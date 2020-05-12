@@ -40,6 +40,22 @@ Aby modyfikować dane o osobie należy wejść w zakładkę ```Osoby```, następ
 ```diff
 - TUTAJ WSTAW SCREENA Z PRZYCISKIEM 'EDYTUJ' W OSOBACH
 ```
-Należy zastosować powyższe procedury przy dodawaniu, edytowaniu i usuwaniu nieruchomości, wyposażenia oraz typu nieruchomości.
+Należy zastosować analogicznie powyższe procedury przy dodawaniu, edytowaniu i usuwaniu nieruchomości, wyposażenia oraz typu nieruchomości.
 
-Aplikacja posiada zadeklarowany na stałe słownik województw, tzn. zamiast wpisywać województwo przy wypełnianiu formularza ```Osoby```, istnieje możliwość wyboru województwa.
+Aplikacja posiada zadeklarowany na stałe słownik województw, tzn. zamiast wpisywać województwo przy wypełnianiu formularza ```Osoby``` lub ```Nieruchomości```, istnieje możliwość wyboru województwa.
+
+<h3>Najem</h3>
+
+W zakładce ```Najem``` istnieje możliwość edycji oraz usuwania danego najmu.
+Aby edytować najem należy wejść w zakładkę ```Najem```, następnie kliknąć przycisk:
+```diff
+- TUTAJ WSTAW SCREENA Z PRZYCISKIEM 'EDYTUJ' W NAjmie
+```
+W edycji najmu mamy możliwość zmiany następujących pól:
+```diff
+- TUTAJ WSTAW SCREENA Z formularzem edycji najmu
+```
+Aby usunąć najem należy wejść w zakładkę ```Najem```, następnie kliknąć przycisk:
+```diff
+- TUTAJ WSTAW SCREENA Z PRZYCISKIEM 'USUŃ' W NAjmie
+```
