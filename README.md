@@ -40,3 +40,6 @@ Aby modyfikować dane o osobie należy wejść w zakładkę ```Osoby```, następ
 ```diff
 - TUTAJ WSTAW SCREENA Z PRZYCISKIEM 'EDYTUJ' W OSOBACH
 ```
+Należy zastosować powyższe procedury przy dodawaniu, edytowaniu i usuwaniu nieruchomości, wyposażenia oraz typu nieruchomości.
+
+Aplikacja posiada zadeklarowany na stałe słownik województw, tzn. zamiast wpisywać województwo przy wypełnianiu formularza ```Osoby```, istnieje możliwość wyboru województwa.
