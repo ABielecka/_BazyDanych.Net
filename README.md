@@ -49,13 +49,23 @@ Aby modyfikować dane o osobie należy:
 Analogicznie 
 Należy zastosować analogicznie powyższe procedury przy dodawaniu, edytowaniu i usuwaniu nieruchomości, wyposażenia oraz typu nieruchomości, województw.
 
-Aplikacja posiada zadeklarowany na stałe słownik województw, tzn. zamiast wpisywać województwo przy wypełnianiu formularza ```Osoby``` lub ```Nieruchomości```, istnieje możliwość wyboru województwa. Analogiczne działanie zostało zastosowane również dla ```Wyposażenie``` i ```Typ nieruchomosci```.
+Aplikacja posiada zadeklarowany słownik województw, tzn. zamiast wpisywać województwo przy wypełnianiu formularza ```Osoby``` lub ```Nieruchomości```, istnieje możliwość wyboru województwa. Analogiczne działanie zostało zastosowane również dla ```Wyposażenie``` i ```Typ nieruchomosci```.
+
+Dostępna jest również lista osób, które mogą są właścicielami nieruchomości lub mogą nieruchomość nająć i typ wynajmu (na pokoje lub pełny metraż) w celu ułatwienia wprowadzania danych już zapisanych użytkowników i uniknięcia pomyłek.
 
 ![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/Województwa.png)
 
+<h3>Nieruchomość i jej składowe</h3>
 
-<h3>Nieruchomość</h3>
-W zakładce ```Nieruchomości``` oprócz możliwych miejsc, można jeszcze dodać do nich wyposażenie lub podzielić na pokoje.
+W zakładce ```Nieruchomości``` oprócz możliwych miejsc, można jeszcze dodać do nich wyposażenie 
+
+![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/NieruchomoscWyp.png)
+
+lub podzielić na pokoje
+
+![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/NieruchomoscPok.png)
+
+Dodawanie/edycja/usuwanie wyposażenia lub pokoju (i wyposażenia dla pokoju) odbywa się zgodnie z procedurą opisaną wyżej na przykładzie zarządzania danymi osób w zakładce ```Osoby```. Wyposażenie wybierane jest z listy dostępnych, wcześniej wprowadzonych wyposażeń w zakładce ```Wyposazenie``` w ```Slowniki```.
 
 Aby zobaczyć adres nieruchomości na mapie, można skorzystać z przycisku ```Mapa```
 
@@ -65,24 +75,28 @@ Po naciśnięciu przycisku zostanie wyświetlone okno, które przedstawi adres n
 
 Jeżeli osoba korzystająca z aplikacji jest zainteresowana obiektami znajdującymi się w okolicy może skorzystać z przycisku ```POI``` (Points of Interest) znajdującego się zaraz obok przycisku ```Mapa```.
 
-W pierwszej kolejności użytkownik musi wybrać obiekty, które go interesują (bankomaty, restauracje, uczelnie) (1) i zatwierdzić swoją decyzję przyciskiem ```Szukaj``` (2). Po przyciśnięciu ```Mapa``` przy zaznaczonym obiekcie (3) obok adresu POI wyświetli się dystans i czas podróży od adresu nieruchomości do POI (4). Po prawej stronie wyświetli się również mapa Google Maps z nakreśloną drogą między dwoma punktami.
+W pierwszej kolejności użytkownik musi wybrać obiekty, które go interesują (np. bankomaty, restauracje, uczelnie) (1) i zatwierdzić swoją decyzję przyciskiem ```Szukaj``` (2). Po przyciśnięciu ```Mapa``` przy zaznaczonym obiekcie (3) obok adresu POI wyświetli się dystans i czas podróży od adresu nieruchomości do POI (4). Po prawej stronie wyświetli się również mapa Google Maps z nakreśloną drogą między dwoma punktami.
 
 ![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/POI.png)
 
 <h3>Najem</h3>
 
-W zakładce ```Najem``` istnieje możliwość edycji oraz usuwania danego najmu.
-Aby edytować najem należy wejść w zakładkę ```Najem```, następnie kliknąć przycisk:
-```diff
-- TUTAJ WSTAW SCREENA Z PRZYCISKIEM 'EDYTUJ' W NAjmie
-```
-W edycji najmu mamy możliwość zmiany następujących pól:
-```diff
-- TUTAJ WSTAW SCREENA Z formularzem edycji najmu
-```
+Oprócz podstawowych funkcji dodawania, edycji i usuwania, nieruchomości (i pokoje) można również wynająć przy pomocy przycisku ```Wynajmij```
+
+![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/Najmij.png)
+
+Po wynajęciu nieruchomości (lub pokoju) jej status zmienia się na "zajęty" - checkbox zostaje zaznaczony i niemożliwe jest ponowne wynajęcie nieruchomości (lub pokoju) do czasu zwolnienia przez poprzedniego najemcę
+
+![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/Status.png)
+
+W zakładce ```Najem``` istnieje możliwość edycji oraz usuwania danego najmu. Aby edytować najem należy wejść w zakładkę ```Najem```, następnie kliknąć przycisk:
+
+![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/WynajemEdit.png)
+
+W przypadku edycji najmu nie jest możliwa zmiana indentyfikatora i osoby najmującej.
+
 Aby usunąć najem należy wejść w zakładkę ```Najem```, następnie kliknąć przycisk:
-```diff
-- TUTAJ WSTAW SCREENA Z PRZYCISKIEM 'USUŃ' W NAjmie
-```
+
+![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/UsunWynajem.png)
 
 Po wyprowadzeniu wszystkich pożądanych zmian, aby zamknąc aplikację należy wcisnąć ```X``` w górnej części okna. 
