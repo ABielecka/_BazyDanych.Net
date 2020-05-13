@@ -16,7 +16,11 @@ Następnie należy zmienić wartość ```HOST```, ```User Id``` oraz ```Password
 
 <h2>Przegląd aplikacji</h2>
 
-Po uruchomieniu programu należy kliknąć przycisk ```Login``` - zostaniemy przekierowani do aplikacji. Między innymi w tym momencie występuje wielowątkowość programu, ponieważ po kliknięciu przycisku ```Login``` pojawia się drugie okienko, które symuluje ładowanie plików i bazy do programu.
+Po uruchomieniu programu należy kliknąć przycisk ```Login``` - zostaniemy przekierowani do aplikacji. 
+![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/Login.PNG)
+Między innymi w tym momencie występuje wielowątkowość programu, ponieważ po kliknięciu przycisku ```Login``` pojawia się drugie okienko, które symuluje ładowanie plików i bazy do programu.
+![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/Loading.PNG)
+Naciśnięcie przycisku Exit kończy działanie programu i zamyka okno.
 
 Po uruchomieniu aplikacji są widoczne zakładki, takie jak np. ```Osoby```, ```Nieruchomości```, ```Najem``` itd.
 
