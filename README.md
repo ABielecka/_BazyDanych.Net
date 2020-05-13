@@ -28,7 +28,7 @@ Naciśnięcie przycisku ```Exit``` kończy działanie programu i zamyka okno.
 
 <h3>Przegląd aplikacji</h3>
 Po uruchomieniu aplikacji są widoczne zakładki, takie jak np. ```Osoby```, ```Nieruchomości```, ```Najem``` itd.
-![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/MainWindow.png)
+![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/Nawigacja.png)
 
 <h3>Dodawanie i edycja danych</h3>
 
