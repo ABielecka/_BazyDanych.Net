@@ -28,6 +28,7 @@ Naciśnięcie przycisku ```Exit``` kończy działanie programu i zamyka okno.
 
 <h3>Przegląd aplikacji</h3>
 Po uruchomieniu aplikacji są widoczne zakładki, takie jak np. ```Osoby```, ```Nieruchomości```, ```Najem``` itd.
+
 ![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/Nawigacja.png)
 
 <h3>Dodawanie i edycja danych</h3>
@@ -91,12 +92,12 @@ Po wynajęciu nieruchomości (lub pokoju) jej status zmienia się na "zajęty" -
 
 W zakładce ```Najem``` istnieje możliwość edycji oraz usuwania danego najmu. Aby edytować najem należy wejść w zakładkę ```Najem```, następnie kliknąć przycisk:
 
-![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/WynajemEdit.png)
+![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/WynajmijEdit.png)
 
 W przypadku edycji najmu nie jest możliwa zmiana indentyfikatora i osoby najmującej.
 
-Aby usunąć najem należy wejść w zakładkę ```Najem```, następnie kliknąć przycisk:
+Aby usunąć najem i jednocześnie zwolnić nieruchomośc/pokój, należy kliknąć przycisk:
 
-![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/UsunWynajem.png)
+![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/usunWynajem.png)
 
 Po wyprowadzeniu wszystkich pożądanych zmian, aby zamknąc aplikację należy wcisnąć ```X``` w górnej części okna. 
