@@ -98,6 +98,6 @@ W przypadku edycji najmu nie jest możliwa zmiana indentyfikatora i osoby najmuj
 
 Aby usunąć najem i jednocześnie zwolnić nieruchomośc/pokój, należy kliknąć przycisk:
 
-![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/usunWynajem.png)
+![alt text](https://github.com/ABielecka/_NetJava-ProjectWPF/blob/master/screenshots/UsunWynajem.png)
 
 Po wyprowadzeniu wszystkich pożądanych zmian, aby zamknąc aplikację należy wcisnąć ```X``` w górnej części okna. 
