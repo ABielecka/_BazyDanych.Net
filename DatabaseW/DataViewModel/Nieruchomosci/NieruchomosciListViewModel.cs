@@ -1,9 +1,11 @@
-﻿using DatabaseW.Views.APIs;
+﻿using DatabaseW.Models;
+using DatabaseW.Views.APIs;
 using DatabaseW.Views.Nieruchomosci;
 using DatabaseW.Views.Pokoje;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Web;
 using System.Windows;
@@ -28,6 +30,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         private ViewModelCommand _removeCommand = null;
         private ViewModelCommand _showMapCommand = null;
         private ViewModelCommand _showSearchCommand = null;
+        private ViewModelCommand _rentCommand = null;
 
         private ViewModelCommand _addCommandW = null;
         private ViewModelCommand _editCommandW = null;
@@ -36,6 +39,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
         private ViewModelCommand _addCommandPok = null;
         private ViewModelCommand _editCommandPok = null;
         private ViewModelCommand _removeCommandPok = null;
+        private ViewModelCommand _rentPokCommand = null;
 
         private ViewModelCommand _addCommandWPok = null;
         private ViewModelCommand _editCommandWPok = null;
@@ -121,6 +125,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
                 AddCommandPok.OnCanExecuteChanged();
                 ShowMapCommand.OnCanExecuteChanged();
                 ShowSearchCommand.OnCanExecuteChanged();
+                RentCommand.OnCanExecuteChanged();
             }
         }
         public Models.Wyposazenie_nieruchomosci SelectedW
@@ -152,6 +157,7 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
                 EditCommandPok.OnCanExecuteChanged();
                 RemoveCommandPok.OnCanExecuteChanged();
                 AddCommandWPok.OnCanExecuteChanged();
+                RentPokCommand.OnCanExecuteChanged();
             }
         }
         public Models.Wyposazenie_pokoju SelectedWPok
@@ -222,6 +228,17 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
                     _showSearchCommand = new ViewModelCommand(p => showSearchCommand(), p => true);
                 }
                 return _showSearchCommand;
+            }
+        }
+        public ViewModelCommand RentCommand
+        {
+            get
+            {
+                if (_rentCommand == null)
+                {
+                    _rentCommand = new ViewModelCommand(p => rentCommand(), p => isAvailable);
+                }
+                return _rentCommand;
             }
         }
 
@@ -331,6 +348,46 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             {
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+        private bool isAvailable
+        {
+            get
+            {
+                if (_selected == null || _selected.Status == true) return false;
+                foreach (Models.Pokoje _pok in _selected.Pokoje)
+                {
+                    if (_pok.Status) return false;
+                }
+                return true;
+            }
+        }
+        private void rentCommand()
+        {
+            WynajmijNieruchomoscDetail _dlg = new WynajmijNieruchomoscDetail();
+            _dlg.AddNew = true;
+            _dlg.Data = new Models.Najem();
+            _dlg.DataNier = _selected;
+            _dlg.Closed += (s, ea) =>
+            {
+                if (_dlg.DialogResult == true)
+                {
+                    if (App._oNajem.DataService.Save(_dlg.Data))
+                    {
+                        App._oNajem.DataService.AreDataLoaded = true;
+                        App._oNajem.Load();
+                        Selected.Status = true;
+                        foreach (Models.Pokoje _pok in _selected.Pokoje)
+                        {
+                            _pok.Status = true;
+                        }
+                        _dataService.Update(Selected);
+                        Load();
+                        Selected = _selected;
+                        App._oNajem.Selected = _dlg.Data;
+                    }
+                }
+            };
+            _dlg.ShowDialog();
         }
         #endregion
 
@@ -474,7 +531,17 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
                 return _removeCommandPok;
             }
         }
-
+        public ViewModelCommand RentPokCommand
+        {
+            get
+            {
+                if (_rentPokCommand == null)
+                {
+                    _rentPokCommand = new ViewModelCommand(p => rentPokCommand(), p => isPokAvailable);
+                }
+                return _rentPokCommand;
+            }
+        }
         private void addNewPok()
         {
             try
@@ -543,6 +610,45 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
             {
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+        private bool isPokAvailable
+        {
+            get
+            {
+                if (_selectedPok == null) return false;
+                if (_selected.TypWynajmu.Equals("pełny metraż")) return false;
+                if (_selectedPok.Status) return false;
+                return true;
+            }
+        }
+        private void rentPokCommand()
+        {
+            bool _rentStatus = true;
+            WynajmijPokojDetail _dlg = new WynajmijPokojDetail();
+            _dlg.AddNew = true;
+            _dlg.Data = new Models.Najem();
+            _dlg.DataNier = _selected;
+            _dlg.DataPok = _selectedPok;
+            _dlg.Closed += (s, ea) =>
+            {
+                if (_dlg.DialogResult == true)
+                {
+                    if (App._oNajem.DataService.Save(_dlg.Data))
+                    {
+                        App._oNajem.DataService.AreDataLoaded = true;
+                        App._oNajem.Load();
+                        SelectedPok.Status = true;
+                        foreach (Models.Pokoje _p in _selected.Pokoje.Where(p => p.Status == false))
+                        {
+                            _rentStatus = false;
+                        }
+                        _selected.Status = _rentStatus;
+                        _dataService.Update(_selected);
+                        Load();
+                    }
+                }
+            };
+            _dlg.ShowDialog();
         }
         #endregion
 

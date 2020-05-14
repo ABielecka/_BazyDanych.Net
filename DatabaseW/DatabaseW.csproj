@@ -139,6 +139,12 @@
     <Compile Include="Views\Nieruchomosci\PokojeDetail.xaml.cs">
       <DependentUpon>PokojeDetail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Nieruchomosci\WynajmijNieruchomoscDetail.xaml.cs">
+      <DependentUpon>WynajmijNieruchomoscDetail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Nieruchomosci\WynajmijPokojDetail.xaml.cs">
+      <DependentUpon>WynajmijPokojDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Nieruchomosci\Wyposazenie_nieruchomosciDetail.xaml.cs">
       <DependentUpon>Wyposazenie_nieruchomosciDetail.xaml</DependentUpon>
     </Compile>
@@ -198,6 +204,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Nieruchomosci\PokojeDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Nieruchomosci\WynajmijNieruchomoscDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Nieruchomosci\WynajmijPokojDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -297,6 +311,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Image\delete.png" />
+    <Resource Include="Image\plus.png" />
+    <Resource Include="Image\rent.png" />
+    <Resource Include="Image\update.png" />
+    <Resource Include="Image\photo.jpg" />
+    <Resource Include="Image\poi.png" />
+    <Resource Include="Image\map.png" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

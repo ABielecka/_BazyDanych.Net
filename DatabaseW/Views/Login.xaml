@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DatabaseW.Views"
         mc:Ignorable="d"
-        Title="Login" Height="192.698" Width="640.718" Loaded="Window_Loaded" Closing="Window_Closing" WindowStartupLocation="CenterScreen">
+        Title="Login" Height="403.698" Width="563.718" Loaded="Window_Loaded" Closing="Window_Closing" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
-        <Button x:Name="btn_login" Content="Log in" HorizontalAlignment="Left" Margin="400,118,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="2.184,2.893" Click="btn_login_Click"/>
-        <Button x:Name="btn_exit" Content="Exit" HorizontalAlignment="Left" Margin="532,118,0,0" VerticalAlignment="Top" Width="75" Click="btn_exit_Click"/>
-
+        <Image Source="/DatabaseW;component/Image/photo.jpg" ClipToBounds="True"/>
+        <Button x:Name="btn_login" Content="Log in" HorizontalAlignment="Left" Margin="332,322,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="2.184,2.893" Click="btn_login_Click"/>
+        <Button x:Name="btn_exit" Content="Exit" HorizontalAlignment="Left" Margin="438,322,0,0" VerticalAlignment="Top" Width="75" Click="btn_exit_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,322,0,0" TextWrapping="Wrap" Text="Gerlach Alicja, 241505" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,338,0,0" TextWrapping="Wrap" Text="Bielecka Anna, 241159" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="93" Width="538" FontSize="36" Foreground="Black" FontWeight="Bold" FontFamily="Castellar" TextAlignment="Center"><Run Text="System wspomagaj"/><Run Text="A"/><Run Text="cy najem nieruchomo"/><Run Text="S"/><Run Text="ci"/></TextBlock>
     </Grid>
 </Window>

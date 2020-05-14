@@ -26,12 +26,12 @@ namespace DatabaseW.Models
         public long IdWojewodztwa
         {
             get { return _idWojewodztwa; }
-            set { _idWojewodztwa = value; }
+            set { _idWojewodztwa = value; NotifyPropertyChanged("IdWojewodztwa"); }
         }
         public string NazwaWojewodztwa
         {
             get { return _nazwaWojewodztwa; }
-            set { _nazwaWojewodztwa = value; }
+            set { _nazwaWojewodztwa = value; NotifyPropertyChanged("NazwaWojewodztwa"); }
         }
         #endregion Public Attributes
 

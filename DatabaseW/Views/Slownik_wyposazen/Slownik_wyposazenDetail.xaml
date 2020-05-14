@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DatabaseW.Views.Slownik_wyposazen"
         mc:Ignorable="d"
-        Title="WyposazenieDetail" Height="111.204" Width="410.045" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="Wyposażenie" Height="111.204" Width="410.045" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

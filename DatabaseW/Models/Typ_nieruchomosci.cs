@@ -26,13 +26,12 @@ namespace DatabaseW.Models
         public long IdTyp
         {
             get { return _idTyp; }
-            set { _idTyp = value; }
+            set { _idTyp = value; NotifyPropertyChanged("IdTyp"); }
         }
-
         public string Opis
         {
             get { return _opis; }
-            set { _opis = value; }
+            set { _opis = value; NotifyPropertyChanged("Opis"); }
         }
         #endregion Public Attributes
 

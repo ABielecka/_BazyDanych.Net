@@ -13,18 +13,31 @@ using System.Data;
 using System.Xml;
 using System.Security.Policy;
 using System.Linq;
+using System.Windows.Media;
+using System.ComponentModel;
 
 namespace DatabaseW.Views.APIs
 {
-    
+
     public class vmDistance
     {
-        public string durtion { get; set; }
-        public double distance { get; set; }
+        public string duration { get; set; }
+        public string distance { get; set; }
     }
-    public partial class PageAPIDetail : Window
+
+    public partial class PageAPIDetail : Window, INotifyPropertyChanged
     {
         private string _adres;
+        private string place_idOrigin;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void NotifyPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
         private ObservableCollection<Models.Local.PageAPI> _dataList;
         private Models.Local.PageAPI _selected;
@@ -32,14 +45,13 @@ namespace DatabaseW.Views.APIs
         public Models.Local.PageAPI Selected
         {
             get { return _selected; }
-            set { _selected = value; }
+            set { _selected = value; NotifyPropertyChanged("Selected"); }
         }
 
         public PageAPIDetail(string adres)
         {
             _adres = adres;
             InitializeComponent();
-            
         }
 
 
@@ -99,8 +111,16 @@ namespace DatabaseW.Views.APIs
 
         private string GooglePlaceUrl(string input)
         {
-            string url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=";
-            url += HttpUtility.UrlEncode(input, Encoding.UTF8);
+            string url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + input;
+            //url += HttpUtility.UrlEncode(input, Encoding.UTF8);
+            url += "&key=AIzaSyAVgl184eqSfpsflfzIpTbV5Ra9Hr7nE9E";
+            return url;
+        }
+
+        private string GoogleGeocodingUrl(string input)
+        {
+            string url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + input;
+            //url += HttpUtility.UrlEncode(query, Encoding.UTF8);
             url += "&key=AIzaSyAVgl184eqSfpsflfzIpTbV5Ra9Hr7nE9E";
             return url;
         }
@@ -136,20 +156,19 @@ namespace DatabaseW.Views.APIs
                 }
                 dataGridSearch.ItemsSource = null;
                 dataGridSearch.ItemsSource = _dataList;
+
+                //szukam place_id dla oryginalnego miejsca
+                url = GoogleGeocodingUrl(_adres);
+                json = webC.DownloadString(new Uri(url));
+                ex = JObject.Parse(json);
+                results = (JArray)ex["results"];
+                place_idOrigin = (string)results[0]["place_id"];
             }
             catch (Exception ex)
             {
                 MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        //private string GooglDistanceMatrixUrl(string input)
-        //{
-        //    string url = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=";
-        //    url += input;
-        //    url += "&key=AIzaSyDxAC7sQJdA9a9LUIjmqf13oEY-whT8CEI";
-        //    return url;
-        //}
 
         public static vmDistance DistanceAndDuration(string url)
         {
@@ -167,8 +186,8 @@ namespace DatabaseW.Views.APIs
             {
                 if (ds.Tables["element"].Rows[0]["status"].ToString() == "OK")
                 {
-                    objDistance.durtion = Convert.ToString(ds.Tables["duration"].Rows[0]["text"].ToString().Trim());
-                    objDistance.distance = Convert.ToDouble(ds.Tables["distance"].Rows[0]["text"].ToString().Replace("ft", "").Trim());
+                    objDistance.duration = Convert.ToString(ds.Tables["duration"].Rows[0]["text"].ToString().Trim());
+                    objDistance.distance = Convert.ToString(ds.Tables["distance"].Rows[0]["text"].ToString().Trim());
                 }
             }
             return objDistance;
@@ -179,16 +198,15 @@ namespace DatabaseW.Views.APIs
             vmDistance objDistance = new vmDistance();
             try
             {
-                string DistanceApiUrl = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=";
+                string DistanceApiUrl = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=place_id:" + place_idOrigin + "&destinations=place_id:";
                 string myKey = "AIzaSyDxAC7sQJdA9a9LUIjmqf13oEY-whT8CEI";
-                _selected.FormattedAddress = string.Concat(Selected.FormattedAddress.Where(c => !char.IsWhiteSpace(c)));
-                _selected.FormattedAddress = _selected.FormattedAddress.Replace(',', '+');
-                _adres = string.Concat(txtAdres.Text.Where(c => !char.IsWhiteSpace(c)));
-                _adres = _adres.Replace(',', '+');
-                string url = DistanceApiUrl + _adres.Trim() + "&destinations=" + _selected.FormattedAddress.Trim() + "&mode=driving&sensor=false&language=en-EN&units=imperial" + "&key=" + myKey;
-                objDistance =DistanceAndDuration(url);
-                txtDuration.Text = objDistance.durtion;
-                txtDistance.Text = Convert.ToString(objDistance.distance);
+                DistanceApiUrl += _selected.Place_id + "&key=" + myKey;
+                objDistance = DistanceAndDuration(DistanceApiUrl);
+                _selected.Distance = objDistance.distance;
+                _selected.Duration = objDistance.duration;
+                WbMapSearch.Navigate("https://www.google.co.in/maps/dir/" + _adres.Trim() + "/" + _selected.FormattedAddress.Trim());
+                dataGridSearch.ItemsSource = null;
+                dataGridSearch.ItemsSource = _dataList;
             }
             catch (Exception ex)
             {

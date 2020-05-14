@@ -20,7 +20,7 @@ namespace DatabaseW
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }

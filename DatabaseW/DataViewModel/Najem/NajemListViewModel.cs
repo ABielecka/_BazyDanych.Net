@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using DatabaseW.Views.Nieruchomosci;
+using DatabaseW.Views.Pokoje;
+using DatabaseW.Views.Najem;
 using System.Windows;
 
 namespace DatabaseW.DataViewModel.Najem
@@ -11,7 +14,6 @@ namespace DatabaseW.DataViewModel.Najem
         private NajemDataService _dataService = new NajemDataService();
 
         private Models.Najem _selected;
-        private ViewModelCommand _addCommand = null;
         private ViewModelCommand _editCommand = null;
         private ViewModelCommand _removeCommand = null;
 
@@ -67,17 +69,6 @@ namespace DatabaseW.DataViewModel.Najem
         }
 
         #region Command
-        public ViewModelCommand AddCommand
-        {
-            get
-            {
-                if (_addCommand == null)
-                {
-                    _addCommand = new ViewModelCommand(p => addNew(), p => true);
-                }
-                return _addCommand;
-            }
-        }
         public ViewModelCommand EditCommand
         {
             get
@@ -101,22 +92,46 @@ namespace DatabaseW.DataViewModel.Najem
             }
         }
 
-        private void addNew()
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show((ex.InnerException != null) ? ex.Message + "\n\r\n\r" + ex.InnerException.Message : ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
         private void editNew()
         {
             try
             {
-
+                if (_selected.Pokoj != null)
+                {
+                    WynajmijPokojDetail _dlg = new WynajmijPokojDetail();
+                    _dlg.AddNew = false;
+                    _dlg.Data = _selected;
+                    _dlg.Closed += (s, ea) =>
+                    {
+                        if (_dlg.DialogResult == true)
+                        {
+                            if (_dataService.Update(_dlg.Data))
+                            {
+                                _dataService.AreDataLoaded = true;
+                                Load();
+                            }
+                        }
+                    };
+                    _dlg.ShowDialog();
+                }
+                else
+                {
+                    WynajmijNieruchomoscDetail _dlg = new WynajmijNieruchomoscDetail();
+                    _dlg.AddNew = false;
+                    _dlg.Data = _selected;
+                    _dlg.Closed += (s, ea) =>
+                    {
+                        if (_dlg.DialogResult == true)
+                        {
+                            if (_dataService.Update(_dlg.Data))
+                            {
+                                _dataService.AreDataLoaded = true;
+                                Load();
+                            }
+                        }
+                    };
+                    _dlg.ShowDialog();
+                }
             }
             catch (Exception ex)
             {
@@ -127,7 +142,31 @@ namespace DatabaseW.DataViewModel.Najem
         {
             try
             {
-
+                if (MessageBox.Show("Czy chcesz usunąć?", "Pytanie", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    Models.Nieruchomosci _nier = _selected.Nieruchomosc;
+                    Models.Pokoje _pok = _selected.Pokoj;
+                    _dataService.AreDataLoaded = true;
+                    if (_dataService.Remove(_selected))
+                    {
+                        if (_nier != null && _pok == null)
+                        {
+                            _nier.Status = false;
+                            foreach (Models.Pokoje _p in _nier.Pokoje)
+                            {
+                                _p.Status = false;
+                            }
+                        }
+                        else if (_nier != null && _pok != null)
+                        {
+                            _nier.Status = false;
+                            _pok.Status = false;
+                        }
+                        App._oNieruchomosc.DataService.Update(_nier);
+                        Load();
+                        App._oNieruchomosc.Selected = _nier;
+                    }
+                }
             }
             catch (Exception ex)
             {

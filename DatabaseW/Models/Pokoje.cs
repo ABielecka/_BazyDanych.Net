@@ -41,47 +41,47 @@ namespace DatabaseW.Models
         public long IdPokoju
         {
             get { return _idPokoju; }
-            set { _idPokoju = value; }
+            set { _idPokoju = value; NotifyPropertyChanged("IdPokoju"); }
         }
         public decimal MetrazPokoju
         {
             get { return _metrazPokoju; }
-            set { _metrazPokoju = value; }
+            set { _metrazPokoju = value; NotifyPropertyChanged("MetrazPokoju"); }
         }
         public int IloscOsobwPokoju
         {
             get { return _iloscOsobwPokoju; }
-            set { _iloscOsobwPokoju = value; }
+            set { _iloscOsobwPokoju = value; NotifyPropertyChanged("IloscOsobwPokoju"); }
         }
         public string Opis
         {
             get { return _opis; }
-            set { _opis = value; }
+            set { _opis = value; NotifyPropertyChanged("Opis"); }
         }
         public double CenaWynajmuPokoju
         {
             get { return _cenaWynajmuPokoju; }
-            set { _cenaWynajmuPokoju = value; }
+            set { _cenaWynajmuPokoju = value; NotifyPropertyChanged("CenaWynajmiPokoju"); }
         }
         public DateTime OkresWynajmuOd
         {
             get { return _okresWynajmuOd; }
-            set { _okresWynajmuOd = value; }
+            set { _okresWynajmuOd = value; NotifyPropertyChanged("OkresWynajmuOd"); }
         }
         public DateTime? OkresWynajmuDo
         {
             get { return _okresWynajmuDo; }
-            set { _okresWynajmuDo = value; }
+            set { _okresWynajmuDo = value; NotifyPropertyChanged("OkresWynajmuDo"); }
         }
         public IList<Wyposazenie_pokoju> Wyposazenie
         {
             get { return _wyposazenie; }
-            set { _wyposazenie = value; }
+            set { _wyposazenie = value; NotifyPropertyChanged("Wyposazenie"); }
         }
         public bool Status
         {
             get { return _status; }
-            set { _status = value; }
+            set { _status = value; NotifyPropertyChanged("Status"); }
         }
         #endregion Public Attributes
 

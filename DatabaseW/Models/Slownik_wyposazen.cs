@@ -26,12 +26,12 @@ namespace DatabaseW.Models
         public long IdWyposazenia
         {
             get { return _idWyposazenia; }
-            set { _idWyposazenia = value; }
+            set { _idWyposazenia = value; NotifyPropertyChanged("IdWyposazenia"); }
         }
         public string Opis
         {
             get { return _opis; }
-            set { _opis = value; }
+            set { _opis = value; NotifyPropertyChanged("Opis"); }
         }
         #endregion Public Attributes
 

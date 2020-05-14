@@ -22,13 +22,17 @@
         <Grid Grid.Row="0">
             <ToolBar Height="30" VerticalAlignment="Top">
                 <Button x:Name="btnAdd" ToolTip="Dodawanie" Height="28" Width="28" Margin="0,0,0,0" Command="{Binding AddCommand}">
-                    <Image Source="/DatabaseW;component/Image/add.png" Style="{StaticResource ImageEnabled}"/>
+                    <Image Source="/DatabaseW;component/Image/plus.png" Style="{StaticResource ImageEnabled}"/>
                 </Button>
-                <Button x:Name="btnEdit" ToolTip="Edycja" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding EditCommand}">
-                    <Image Source="/DatabaseW;component/Image/edit.png" Style="{StaticResource ImageEnabled}"/>
+                <Button x:Name="btnEdit" ToolTip="Edycja" Height="28" Width="28" Margin="5,0,0,0" Command="{Binding EditCommand}">
+                    <Image Source="/DatabaseW;component/Image/update.png" Style="{StaticResource ImageEnabled}"/>
                 </Button>
-                <Button x:Name="btnRemove" ToolTip="Usuwanie" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding RemoveCommand}">
-                    <Image Source="/DatabaseW;component/Image/remove.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
+                <Button x:Name="btnRemove" ToolTip="Usuwanie" Height="28" Width="28" Margin="5,0,0,0" Command="{Binding RemoveCommand}">
+                    <Image Source="/DatabaseW;component/Image/delete.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
+                </Button>
+                <Separator Margin="5,0,0,0"/> 
+                <Button x:Name="btnRent" ToolTip="Wynajem" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding RentCommand}">
+                    <Image Source="/DatabaseW;component/Image/rent.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
                 </Button>
             </ToolBar>
             <DataGrid x:Name="dataGrid" Margin="0,30,0,0"
@@ -47,15 +51,15 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                      </DataGridTemplateColumn>
-                      <DataGridTemplateColumn>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
                                 <Button Content="POI" ToolTip="Pokaż POI w okolicy" 
                                         Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl},Mode=FindAncestor},Path=DataContext.ShowSearchCommand}"/>
                             </DataTemplate>
-                       </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                    <DataGridCheckBoxColumn Header="Status" Binding="{Binding Status}"/>
                     <DataGridTextColumn Header="Właściciel" Binding="{Binding OsobaWynajmujaca.NazwiskoImie}"/>
                     <DataGridTextColumn Header="Typ budynku" Binding="{Binding TypNieruchomosci.Opis}"/>
                     <DataGridTextColumn Header="Typ wynajmu" Binding="{Binding TypWynajmu}"/>
@@ -70,20 +74,20 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
+        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"  Background="#FF858484"/>
         <Grid Grid.Row="2">
             <TabControl Margin="0">
                 <TabItem Header="Wyposażenie nieruchomosci">
                     <Grid>
                         <ToolBar Height="30" VerticalAlignment="Top">
                             <Button x:Name="btnAddW" ToolTip="Dodawanie" Height="28" Width="28" Margin="0,0,0,0" Command="{Binding AddCommandW}">
-                                <Image Source="/DatabaseW;component/Image/add.png" Style="{StaticResource ImageEnabled}"/>
+                                <Image Source="/DatabaseW;component/Image/plus.png" Style="{StaticResource ImageEnabled}"/>
                             </Button>
-                            <Button x:Name="btnEditW" ToolTip="Edycja" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding EditCommandW}">
-                                <Image Source="/DatabaseW;component/Image/edit.png" Style="{StaticResource ImageEnabled}"/>
+                            <Button x:Name="btnEditW" ToolTip="Edycja" Height="28" Width="28" Margin="5,0,0,0" Command="{Binding EditCommandW}">
+                                <Image Source="/DatabaseW;component/Image/update.png" Style="{StaticResource ImageEnabled}"/>
                             </Button>
-                            <Button x:Name="btnRemoveW" ToolTip="Usuwanie" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding RemoveCommandW}">
-                                <Image Source="/DatabaseW;component/Image/remove.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
+                            <Button x:Name="btnRemoveW" ToolTip="Usuwanie" Height="28" Width="28" Margin="5,0,0,0" Command="{Binding RemoveCommandW}">
+                                <Image Source="/DatabaseW;component/Image/delete.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
                             </Button>
                         </ToolBar>
                         <DataGrid x:Name="dataGridW" Margin="0,30,0,0"
@@ -108,14 +112,18 @@
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
                             <ToolBar Height="30" VerticalAlignment="Top" Grid.ColumnSpan="2">
-                                <Button x:Name="btnAddP" ToolTip="Dodawanie" Height="28" Width="28" Margin="0,-2,0,-1" Command="{Binding AddCommandPok}" VerticalAlignment="Bottom">
-                                    <Image Source="/DatabaseW;component/Image/add.png" Style="{StaticResource ImageEnabled}"/>
+                                <Button x:Name="btnAddP" ToolTip="Dodawanie" Height="28" Width="28" Margin="0,0,0,0" Command="{Binding AddCommandPok}" VerticalAlignment="Bottom">
+                                    <Image Source="/DatabaseW;component/Image/plus.png" Style="{StaticResource ImageEnabled}"/>
                                 </Button>
-                                <Button x:Name="btnEditP" ToolTip="Edycja" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding EditCommandPok}">
-                                    <Image Source="/DatabaseW;component/Image/edit.png" Style="{StaticResource ImageEnabled}"/>
+                                <Button x:Name="btnEditP" ToolTip="Edycja" Height="28" Width="28" Margin="5,0,0,0" Command="{Binding EditCommandPok}">
+                                    <Image Source="/DatabaseW;component/Image/update.png" Style="{StaticResource ImageEnabled}"/>
                                 </Button>
-                                <Button x:Name="btnRemoveP" ToolTip="Usuwanie" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding RemoveCommandPok}">
-                                    <Image Source="/DatabaseW;component/Image/remove.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
+                                <Button x:Name="btnRemoveP" ToolTip="Usuwanie" Height="28" Width="28" Margin="5,0,0,0" Command="{Binding RemoveCommandPok}">
+                                    <Image Source="/DatabaseW;component/Image/delete.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
+                                </Button>
+                                <Separator Margin="5,0,0,0"/>
+                                <Button x:Name="btnRentPok" ToolTip="Wynajem" Height="28" Width="28" Margin="5,0,0,0" Command="{Binding RentPokCommand}">
+                                    <Image Source="/DatabaseW;component/Image/rent.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
                                 </Button>
                             </ToolBar>
                             <DataGrid x:Name="dataGridP" Margin="0,30,0,0"
@@ -126,7 +134,7 @@
                                     IsReadOnly="True"
                                     SelectionMode="Single" Grid.ColumnSpan="2">
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+                                    <DataGridCheckBoxColumn Header="Status" Binding="{Binding Status}"/>
                                     <DataGridTextColumn Header="Ilosc osob w pokoju" Binding="{Binding IloscOsobwPokoju}"/>
                                     <DataGridTextColumn Header="Opis" Binding="{Binding Opis}"/>
                                     <DataGridTextColumn Header="Metraż" Binding="{Binding MetrazPokoju}"/>
@@ -136,18 +144,18 @@
                                 </DataGrid.Columns>
                             </DataGrid>
                         </Grid>
-                        <GridSplitter Grid.Column="1" Height="5" VerticalAlignment="Stretch"/>
+                        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch"  Background="#FF858484"/>
                         <Grid Grid.Column="2">
                             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Wyposażenie pokoju" Width="200" Margin="4,5,-7,59"/>
                             <ToolBar Height="30" VerticalAlignment="Top" Margin="0,24,0,0">
-                                <Button x:Name="btnAddWP" ToolTip="Dodawanie" Height="28" Width="28" Margin="0,-2,0,-1" Command="{Binding AddCommandWPok}" VerticalAlignment="Bottom">
-                                    <Image Source="/DatabaseW;component/Image/add.png" Style="{StaticResource ImageEnabled}"/>
+                                <Button x:Name="btnAddWP" ToolTip="Dodawanie" Height="28" Width="28" Margin="0,0,0,0" Command="{Binding AddCommandWPok}" VerticalAlignment="Bottom">
+                                    <Image Source="/DatabaseW;component/Image/plus.png" Style="{StaticResource ImageEnabled}"/>
                                 </Button>
-                                <Button x:Name="btnEditWP" ToolTip="Edycja" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding EditCommandWPok}">
-                                    <Image Source="/DatabaseW;component/Image/edit.png" Style="{StaticResource ImageEnabled}"/>
+                                <Button x:Name="btnEditWP" ToolTip="Edycja" Height="28" Width="28" Margin="5,0,0,0" Command="{Binding EditCommandWPok}">
+                                    <Image Source="/DatabaseW;component/Image/update.png" Style="{StaticResource ImageEnabled}"/>
                                 </Button>
-                                <Button x:Name="btnRemoveWP" ToolTip="Usuwanie" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding RemoveCommandWPok}">
-                                    <Image Source="/DatabaseW;component/Image/remove.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
+                                <Button x:Name="btnRemoveWP" ToolTip="Usuwanie" Height="28" Width="28" Margin="5,0,0,0" Command="{Binding RemoveCommandWPok}">
+                                    <Image Source="/DatabaseW;component/Image/delete.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
                                 </Button>
                             </ToolBar>
                             <DataGrid x:Name="dataGridWP" Margin="0,54,0,0"

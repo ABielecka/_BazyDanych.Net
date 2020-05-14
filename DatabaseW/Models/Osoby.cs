@@ -39,42 +39,42 @@ namespace DatabaseW.Models
         public long IdOsoby
         {
             get { return _idOsoby; }
-            set { _idOsoby = value; }
+            set { _idOsoby = value; NotifyPropertyChanged("IdOsoby"); }
         }
         public string Nazwisko
         {
             get { return _nazwisko; }
-            set { _nazwisko = value; }
+            set { _nazwisko = value; NotifyPropertyChanged("Nazwisko"); }
         }
         public string Imie
         {
             get { return _imie; }
-            set { _imie = value; }
+            set { _imie = value; NotifyPropertyChanged("Imie"); }
         }
         public DateTime? DataUrodzenia
         {
             get { return _dataUrodzenia; }
-            set { _dataUrodzenia = value; }
+            set { _dataUrodzenia = value; NotifyPropertyChanged("DataUrodzenia"); }
         }
         public string Telefon
         {
             get { return _telefon; }
-            set { _telefon = value; }
+            set { _telefon = value; NotifyPropertyChanged("Telefon"); }
         }
         public Slownik_Wojewodztw WojewodztwoZamieszkania
         {
             get { return _wojewodztwoZamieszkania; }
-            set { _wojewodztwoZamieszkania = value; }
+            set { _wojewodztwoZamieszkania = value; NotifyPropertyChanged("WojewodztwoZamieszkania"); }
         }
         public string MiastoZamieszkania
         {
             get { return _miastoZamieszkania; }
-            set { _miastoZamieszkania = value; }
+            set { _miastoZamieszkania = value; NotifyPropertyChanged("MiastoZamieszkania"); }
         }
         public string UlicaZamieszkania
         {
             get { return _ulicaZamieszkania; }
-            set { _ulicaZamieszkania = value; }
+            set { _ulicaZamieszkania = value; NotifyPropertyChanged("UlicaZamieszkania"); }
         }
         [NotMapped]
         public string NazwiskoImie

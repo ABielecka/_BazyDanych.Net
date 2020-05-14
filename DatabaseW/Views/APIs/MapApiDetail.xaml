@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DatabaseW.Views.APIs"
         mc:Ignorable="d"
-        Title="MapApiDetail" Height="800" Width="1200" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="Mapa" Height="800" Width="1200" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
         <WebBrowser  Name="WbMap" Navigated="WbMap_Navigated" />
     </Grid>

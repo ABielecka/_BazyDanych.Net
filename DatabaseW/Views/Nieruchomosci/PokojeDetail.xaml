@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DatabaseW.Views"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="PokojeDetail" Height="496.6" Width="440.121" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="Pokój" Height="472.681" Width="441.26" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,43 +15,45 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
-        <Label x:Name="lblStat" Content="Wynajęte" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" 
-               RenderTransformOrigin="0.169,0.552"/>
-        <Label x:Name="lblWlasc" Content="Ilość osób w pokoju" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblOpis" Content="Opis" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" 
+        <Label x:Name="lblWlasc" Content="Ilość osób w pokoju" HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblOpis" Content="Opis" HorizontalAlignment="Left" Margin="11,41,0,0" VerticalAlignment="Top" 
                RenderTransformOrigin="0.502,1.5" Height="26"/>
-        <Label x:Name="lblMetraz" Content="Metraż" HorizontalAlignment="Left" Margin="10,312,0,0" VerticalAlignment="Top" 
+        <Label x:Name="lblMetraz" Content="Metraż" HorizontalAlignment="Left" Margin="11,277,0,0" VerticalAlignment="Top" 
                RenderTransformOrigin="0.169,0.552" Height="25"/>
-        <Label x:Name="lblCena" Content="Cena" HorizontalAlignment="Left" Margin="10,342,0,0" VerticalAlignment="Top" 
+        <Label x:Name="lblCena" Content="Cena" HorizontalAlignment="Left" Margin="11,307,0,0" VerticalAlignment="Top" 
                RenderTransformOrigin="0.169,0.552" Height="27"/>
-        <Label x:Name="lblOd" Content="Wynajem od" HorizontalAlignment="Left" Margin="10,369,0,0" VerticalAlignment="Top" 
+        <Label x:Name="lblOd" Content="Wynajem od" HorizontalAlignment="Left" Margin="11,334,0,0" VerticalAlignment="Top" 
                RenderTransformOrigin="0.169,0.552" Height="25"/>
-        <Label x:Name="lblDo" Content="Wynajem do" HorizontalAlignment="Left" Margin="10,399,0,0" VerticalAlignment="Top" 
+        <Label x:Name="lblDo" Content="Wynajem do" HorizontalAlignment="Left" Margin="11,364,0,0" VerticalAlignment="Top" 
                RenderTransformOrigin="0.169,0.552" Height="27"/>
 
-        <CheckBox x:Name="ckbStatPok" HorizontalAlignment="Left" Margin="144,20,0,0" VerticalAlignment="Top"
-                  IsChecked="{Binding Status, Mode=TwoWay, NotifyOnValidationError=True, 
-                  UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Width="16"/>
-        
-        <!--<TextBox HorizontalAlignment="Left" Height="23" Margin="144,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="25" MaxLength="50"
-                 Text="{Binding IloscOsobwPokoju, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
-                 ValidatesOnDataErrors=True}"/>-->
-        <TextBox HorizontalAlignment="Left" Height="228" Margin="144,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="50"
+        <xctk:IntegerUpDown HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" Width="52" Height="24" Increment="1"
+                            Watermark=""
+                            Value="{Binding IloscOsobwPokoju, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                            ValidatesOnDataErrors=True}"
+                            Maximum="12"/>
+        <TextBox HorizontalAlignment="Left" Height="228" Margin="145,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="50"
                  Text="{Binding Opis, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
                  ValidatesOnDataErrors=True}"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="144,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="100"
-                 Text="{Binding MetrazPokoju, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
-                 ValidatesOnDataErrors=True}"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="144,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" MaxLength="100"
-                 Text="{Binding CenaWynajmuPokoju, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
-                 ValidatesOnDataErrors=True}"/>
-        <DatePicker HorizontalAlignment="Left" Margin="144,368,0,0" VerticalAlignment="Top" Width="152"
+        <xctk:DecimalUpDown HorizontalAlignment="Left" Margin="145,274,0,0" VerticalAlignment="Top" Width="86" Height="24" Increment="1"
+                            Watermark="" 
+                            FormatString="F2"
+                            Value="{Binding MetrazPokoju, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                            ValidatesOnDataErrors=True}"/>
+        <xctk:DecimalUpDown HorizontalAlignment="Left" Margin="145,303,0,0" VerticalAlignment="Top" Width="86" Height="24" Increment="1"
+                            Watermark="" 
+                            FormatString="F2"
+                            Value="{Binding CenaWynajmuPokoju, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                            ValidatesOnDataErrors=True}"/>
+        <DatePicker HorizontalAlignment="Left" Margin="145,333,0,0" VerticalAlignment="Top" Width="152"
                     SelectedDate="{Binding OkresWynajmuOd, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged,
                     ValidatesOnDataErrors=True}" Height="24"/>
-        <DatePicker HorizontalAlignment="Left" Margin="144,401,0,0" VerticalAlignment="Top" Width="152"
+        <DatePicker HorizontalAlignment="Left" Margin="145,366,0,0" VerticalAlignment="Top" Width="152"
                     SelectedDate="{Binding OkresWynajmuDo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
                     ValidatesOnDataErrors=True}" Height="24"/>
-        <Button x:Name="btnZapisz"  Content="Zapisz" HorizontalAlignment="Left" Margin="205,434,0,0" VerticalAlignment="Top" Width="75" Click="btnZapisz_Click"/>
-        <Button x:Name="btnAnuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="299,434,0,0" VerticalAlignment="Top" Width="75" Click="btnAnuluj_Click"/>
+        <Button x:Name="btnZapisz"  Content="Zapisz" HorizontalAlignment="Left" Margin="206,399,0,0" VerticalAlignment="Top" Width="75" Click="btnZapisz_Click"/>
+        <Button x:Name="btnAnuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="300,399,0,0" VerticalAlignment="Top" Width="75" Click="btnAnuluj_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="236,279,0,0" TextWrapping="Wrap" Text="m2" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="236,307,0,0" TextWrapping="Wrap" Text="zł" VerticalAlignment="Top"/>
     </Grid>
 </Window>

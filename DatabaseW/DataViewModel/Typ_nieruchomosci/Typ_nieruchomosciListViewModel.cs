@@ -1,4 +1,5 @@
 ﻿using DatabaseW.Views.Typ_nieruchomosci;
+using Property_rental.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +10,7 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
     public class Typ_nieruchomosciListViewModel : ViewModel
     {
         private ObservableCollection<Models.Typ_nieruchomosci> _dataList = new ObservableCollection<Models.Typ_nieruchomosci>();
-        private Typ_nieruchomosciDataService _dataService = new Typ_nieruchomosciDataService();
+        private Typ_nieruchomosciDataService _dataService = new Typ_nieruchomosciDataService(App.Ctx);
 
         private Models.Typ_nieruchomosci _selected;
         private ViewModelCommand _addCommand = null;

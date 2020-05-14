@@ -16,13 +16,13 @@
     <Grid>
         <ToolBar Height="30" VerticalAlignment="Top">
             <Button x:Name="btnAdd" ToolTip="Dodawanie" Height="28" Width="28" Margin="0,0,0,0" Command="{Binding AddCommand}">
-                <Image Source="/DatabaseW;component/Image/add.png" Style="{StaticResource ImageEnabled}"/>
+                <Image Source="/DatabaseW;component/Image/plus.png" Style="{StaticResource ImageEnabled}"/>
             </Button>
-            <Button x:Name="btnEdit" ToolTip="Edycja" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding EditCommand}">
-                <Image Source="/DatabaseW;component/Image/edit.png" Style="{StaticResource ImageEnabled}"/>
+            <Button x:Name="btnEdit" ToolTip="Edycja" Height="28" Width="28" Margin="5,0,0,0" Command="{Binding EditCommand}">
+                <Image Source="/DatabaseW;component/Image/update.png" Style="{StaticResource ImageEnabled}"/>
             </Button>
-            <Button x:Name="btnRemove" ToolTip="Usuwanie" Height="28" Width="28" Margin="10,0,0,0" Command="{Binding RemoveCommand}">
-                <Image Source="/DatabaseW;component/Image/remove.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
+            <Button x:Name="btnRemove" ToolTip="Usuwanie" Height="28" Width="28" Margin="5,0,0,0" Command="{Binding RemoveCommand}">
+                <Image Source="/DatabaseW;component/Image/delete.png" Style="{StaticResource ImageEnabled}" RenderTransformOrigin="2.329,0.73"/>
             </Button>
         </ToolBar>
         <DataGrid x:Name="dataGrid" Margin="0,30,0,0"

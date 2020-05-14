@@ -54,77 +54,77 @@ namespace DatabaseW.Models
         public long IdNieruchomosci
         {
             get { return _idNieruchomosci; }
-            set { _idNieruchomosci = value; }
+            set { _idNieruchomosci = value; NotifyPropertyChanged("IdNieruchomosci"); }
         }
         public decimal MetrazNieruchomosci
         {
             get { return _metrazNieruchomosci; }
-            set { _metrazNieruchomosci = value; }
+            set { _metrazNieruchomosci = value; NotifyPropertyChanged("MetrazNieruchomosci"); }
         }
         public string OpisNieruchomosci
         {
             get { return _opisNieruchomosci; }
-            set { _opisNieruchomosci = value; }
+            set { _opisNieruchomosci = value; NotifyPropertyChanged("OpisNieruchomosci"); }
         }
         public double CenaWynajmuNieruchomosci
         {
             get { return _cenaWynajmuNieruchomosci; }
-            set { _cenaWynajmuNieruchomosci = value; }
+            set { _cenaWynajmuNieruchomosci = value; NotifyPropertyChanged("CenaWynajmuNieruchomosci"); }
         }
         public DateTime OkresWynajmuOd
         {
             get { return _okresWynajmuOd; }
-            set { _okresWynajmuOd = value; }
+            set { _okresWynajmuOd = value; NotifyPropertyChanged("OkresWynajmuOd"); }
         }
         public DateTime? OkresWynajmuDo
         {
             get { return _okresWynajmuDo; }
-            set { _okresWynajmuDo = value; }
+            set { _okresWynajmuDo = value; NotifyPropertyChanged("OkresWynajmuDo"); }
         }
         public string TypWynajmu
         {
             get { return _typWynajmu; }
-            set { _typWynajmu = value; }
+            set { _typWynajmu = value; NotifyPropertyChanged("TypWynajmu"); }
         }
         public bool Status
         {
             get { return _status; }
-            set { _status = value; }
+            set { _status = value; NotifyPropertyChanged("Status"); }
         }
         public Typ_nieruchomosci TypNieruchomosci
         {
             get { return _typNieruchomosci; }
-            set { _typNieruchomosci = value; }
+            set { _typNieruchomosci = value; NotifyPropertyChanged("TypNieruchomosci"); }
         }
         public Osoby OsobaWynajmujaca
         {
             get { return _osobaWynajmujaca; }
-            set { _osobaWynajmujaca = value; }
+            set { _osobaWynajmujaca = value; NotifyPropertyChanged("OsobaWynajmujaca"); }
         }
         public IList<Pokoje> Pokoje
         {
             get { return _pokoje; }
-            set { _pokoje = value; }
+            set { _pokoje = value; NotifyPropertyChanged("Pokoje"); }
         }
         public IList<Wyposazenie_nieruchomosci> Wyposazenie
         {
             get { return _wyposazenie; }
-            set { _wyposazenie = value; }
+            set { _wyposazenie = value; NotifyPropertyChanged("Wyposazenie"); }
         }
         public Slownik_Wojewodztw WojewodztwoNieruchomosci
         {
             get { return _wojewodztwoNieruchomosci; }
-            set { _wojewodztwoNieruchomosci = value; }
+            set { _wojewodztwoNieruchomosci = value; NotifyPropertyChanged("WojewodztwoNieruchomosci"); }
         }
         public string MiastoNieruchomosci
         {
             get { return _miastoNieruchomosci; }
-            set { _miastoNieruchomosci = value; }
+            set { _miastoNieruchomosci = value; NotifyPropertyChanged("MiastoNieruchomosci"); }
         }
         public string UlicaNieruchomosci
         {
             get { return _ulicaNieruchomosci; }
-            set { _ulicaNieruchomosci = value; }
+            set { _ulicaNieruchomosci = value; NotifyPropertyChanged("UlicaNieruchomosci"); }
         }
         #endregion Public Attributes
 

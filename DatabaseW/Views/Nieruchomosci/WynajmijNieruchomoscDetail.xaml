@@ -1,0 +1,47 @@
+﻿<Window x:Class="DatabaseW.Views.Nieruchomosci.WynajmijNieruchomoscDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DatabaseW.Views.Nieruchomosci"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Wynajmij nieruchomość" Height="230.886" Width="333.702" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../WPFControls.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Label x:Name="lblIden" Content="Identyfikator" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.487,0.76"/>
+        <Label x:Name="lblNajem" Content="Najemca" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.487,0.76"/>
+        <Label x:Name="lblNOd" Content="Najem od" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="0.169,0.552"/>
+        <Label x:Name="lblNDo" Content="Najem do" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="0.169,0.552"/>
+        <Label x:Name="lblCenaUst" Content="Ustalona cena" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="0.169,0.552"/>
+        <TextBlock HorizontalAlignment="Left" Margin="196,77,0,0" TextWrapping="Wrap" Text="zł" VerticalAlignment="Top"/>
+
+        <ComboBox x:Name="cmbNajem" HorizontalAlignment="Left" Margin="105,42,0,0" VerticalAlignment="Top" Width="152"
+                  DisplayMemberPath="NazwiskoImie" SelectedItem="{Binding OsobaNajmujaca, Mode=TwoWay, 
+                  NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+        <DatePicker HorizontalAlignment="Left" Margin="105,97,0,0" VerticalAlignment="Top" Width="152"
+                    SelectedDate="{Binding WynajemOd, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged,
+                    ValidatesOnDataErrors=True}"/>
+        <DatePicker HorizontalAlignment="Left" Margin="105,126,0,0" VerticalAlignment="Top" Width="152"
+                    SelectedDate="{Binding WynajemDo, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                    ValidatesOnDataErrors=True}"/>
+        <xctk:DecimalUpDown HorizontalAlignment="Left" Margin="105,69,0,0" VerticalAlignment="Top" Width="86" Height="24" Increment="1"
+                            Watermark="" 
+                            FormatString="F2"
+                            Value="{Binding UstalonaCenaNajmu, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                            ValidatesOnDataErrors=True}"/>
+        <Button x:Name="btnZapisz"  Content="Zapisz" HorizontalAlignment="Left" Margin="89,160,0,0" VerticalAlignment="Top" Width="74" Click="btnZapisz_Click"/>
+        <Button x:Name="btnAnuluj" Content="Anuluj" HorizontalAlignment="Left" Margin="183,160,0,0" VerticalAlignment="Top" Width="74" Click="btnAnuluj_Click"/>
+        <TextBox x:Name="txtIdent" Text="{Binding Identyfikator, Mode=TwoWay, NotifyOnValidationError=True, UpdateSourceTrigger=PropertyChanged, 
+                            ValidatesOnDataErrors=True}"  HorizontalAlignment="Left" Height="23" Margin="105,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Window>

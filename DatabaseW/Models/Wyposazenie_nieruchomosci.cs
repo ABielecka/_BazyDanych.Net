@@ -27,12 +27,12 @@ namespace DatabaseW.Models
         public long IdWyposazeniaNieruchomosci
         {
             get { return _idWyposazeniaNieruchomosci; }
-            set { _idWyposazeniaNieruchomosci = value; }
+            set { _idWyposazeniaNieruchomosci = value; NotifyPropertyChanged("IdWyposazeniaNieruchomosci"); }
         }
         public Slownik_wyposazen Wyposazenie
         {
             get { return _wyposazenie; }
-            set { _wyposazenie = value; }
+            set { _wyposazenie = value; NotifyPropertyChanged("Wyposazenie"); }
         }
         #endregion Public Attributes
 

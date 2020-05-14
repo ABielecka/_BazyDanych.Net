@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Property_rental.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -10,7 +11,13 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
     {
         private List<Models.Typ_nieruchomosci> _dataList = new List<Models.Typ_nieruchomosci>();
         private bool _areDataLoaded = false;
+        private Context _context;
         public event EventHandler DataLoaded;
+
+        public Typ_nieruchomosciDataService(Context _ctx)
+        {
+            _context = _ctx;
+        }
 
         public List<Models.Typ_nieruchomosci> DataList
         {
@@ -35,7 +42,7 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
             try
             {
                 _dataList.Clear();
-                var data = App.Ctx.Typ_Nieruchomoscis.OrderBy(k => k.Opis).ToList<Models.Typ_nieruchomosci>();
+                var data = _context.Typ_Nieruchomoscis.OrderBy(k => k.Opis).ToList<Models.Typ_nieruchomosci>();
                 foreach (Models.Typ_nieruchomosci us in data)
                 {
                     _dataList.Add(us);
@@ -52,8 +59,8 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
         {
             try
             {
-                App.Ctx.Typ_Nieruchomoscis.Add(data);
-                App.Ctx.SaveChanges();
+                _context.Typ_Nieruchomoscis.Add(data);
+                _context.SaveChanges();
                 _dataList.Add(data);
 
                 return true;
@@ -69,8 +76,8 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
         {
             try
             {
-                App.Ctx.Entry(data).State = EntityState.Modified;
-                App.Ctx.SaveChanges();
+                _context.Entry(data).State = EntityState.Modified;
+                _context.SaveChanges();
 
                 return true;
             }
@@ -85,8 +92,8 @@ namespace DatabaseW.DataViewModel.Typ_nieruchomosci
         {
             try
             {
-                App.Ctx.Typ_Nieruchomoscis.Remove(data);
-                App.Ctx.SaveChanges();
+                _context.Typ_Nieruchomoscis.Remove(data);
+                _context.SaveChanges();
                 _dataList.Remove(data);
 
                 return true;

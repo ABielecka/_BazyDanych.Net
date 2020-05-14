@@ -8,7 +8,7 @@
         xmlns:s="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:DatabaseW"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" WindowState="Maximized">
+        Title="Najem nieruchomości" Height="450" Width="800" Loaded="Window_Loaded" WindowState="Maximized">
     <Grid>
         <xcad:DockingManager AllowMixedOrientation="True"
                            BorderBrush="Black"

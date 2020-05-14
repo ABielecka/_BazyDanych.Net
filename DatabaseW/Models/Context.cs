@@ -19,15 +19,15 @@ namespace Property_rental.Models
         {
         }
 
-        public DbSet<Osoby> Osobies { get; set; }
-        public DbSet<Slownik_Wojewodztw> Slownik_Wojewodztws { get; set; }
-        public DbSet<Nieruchomosci> Nieruchomoscis { get; set; }
+        public virtual DbSet<Osoby> Osobies { get; set; }
+        public virtual DbSet<Slownik_Wojewodztw> Slownik_Wojewodztws { get; set; }
+        public virtual DbSet<Nieruchomosci> Nieruchomoscis { get; set; }
         public DbSet<Pokoje> Pokojes { get; set; }
-        public DbSet<Slownik_wyposazen> Slownik_Wyposazens { get; set; }
-        public DbSet<Typ_nieruchomosci> Typ_Nieruchomoscis { get; set; }
-        public DbSet<Najem> Najems { get; set; }
-        public DbSet<Wyposazenie_nieruchomosci> Wyposazenie_Nieruchomoscis { get; set; }
-        public DbSet<Wyposazenie_pokoju> Wyposazenie_Pokojus { get; set; }
+        public virtual DbSet<Slownik_wyposazen> Slownik_Wyposazens { get; set; }
+        public virtual DbSet<Typ_nieruchomosci> Typ_Nieruchomoscis { get; set; }
+        public virtual DbSet<Najem> Najems { get; set; }
+        public virtual DbSet<Wyposazenie_nieruchomosci> Wyposazenie_Nieruchomoscis { get; set; }
+        public virtual DbSet<Wyposazenie_pokoju> Wyposazenie_Pokojus { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
