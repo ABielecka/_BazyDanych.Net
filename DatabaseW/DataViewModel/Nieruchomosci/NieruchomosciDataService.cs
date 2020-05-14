@@ -41,6 +41,10 @@ namespace DatabaseW.DataViewModel.Nieruchomosci
                 var data = App.Ctx.Nieruchomoscis.Include("Pokoje")
                     .Include("Wyposazenie")
                     .Include("WojewodztwoNieruchomosci")
+                    .Include("TypNieruchomosci")
+                    .Include("OsobaWynajmujaca")
+                    .Include("Pokoje")
+                    .Include("Pokoje.Wyposazenie")
                     .OrderBy(k => k.IdNieruchomosci).ToList<Models.Nieruchomosci>();
                 foreach (Models.Nieruchomosci us in data)
                 {
