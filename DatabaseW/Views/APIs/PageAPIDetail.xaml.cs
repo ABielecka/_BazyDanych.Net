@@ -113,7 +113,7 @@ namespace DatabaseW.Views.APIs
         {
             string url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + input;
             //url += HttpUtility.UrlEncode(input, Encoding.UTF8);
-            url += "&key=AIzaSyAVgl184eqSfpsflfzIpTbV5Ra9Hr7nE9E";
+            url += "&kluczniedostepnywpublicznymrepozytorium";
             return url;
         }
 
@@ -121,7 +121,7 @@ namespace DatabaseW.Views.APIs
         {
             string url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + input;
             //url += HttpUtility.UrlEncode(query, Encoding.UTF8);
-            url += "&key=AIzaSyAVgl184eqSfpsflfzIpTbV5Ra9Hr7nE9E";
+            url += "&kluczniedostepnywpublicznymrepozytorium";
             return url;
         }
 
@@ -199,7 +199,7 @@ namespace DatabaseW.Views.APIs
             try
             {
                 string DistanceApiUrl = "https://maps.googleapis.com/maps/api/distancematrix/xml?origins=place_id:" + place_idOrigin + "&destinations=place_id:";
-                string myKey = "AIzaSyDxAC7sQJdA9a9LUIjmqf13oEY-whT8CEI";
+                string myKey = "&kluczniedostepnywpublicznymrepozytorium";
                 DistanceApiUrl += _selected.Place_id + "&key=" + myKey;
                 objDistance = DistanceAndDuration(DistanceApiUrl);
                 _selected.Distance = objDistance.distance;
